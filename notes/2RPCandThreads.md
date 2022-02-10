@@ -15,13 +15,13 @@
 ##### "Allow different parts of the program to sort of be in its own point in a different activity."
 ##### Each thread includes some per-thread state: `(pc, reg, stack)`.
 
-* [x]**I/O concurrency**
+* [x] **I/O concurrency**
     * While some threads are waiting for I/O, other threads can utilize the CPU resources.
 
-* [x]**Parallelism**
+* [x] **Parallelism**
     * Execute code in parallel on several cores.
 
-* [x]**Convinience**
+* [x] **Convinience**
     * relatively simple to programming (compare with event-driven process)
 
 
@@ -40,10 +40,10 @@ To have a better understanding of threads, let's compare to its alternative:
 * [x] **I/O concurrency**
     * The program can pick current unblocked activity to run (just like in threads)
     * It can eliminates thread costs (which can be substantial)
-* [] **Parallelism**
+* [ ] **Parallelism**
     * There are no parallelism in multi-core machine (Only one thread)
 
-* [] **Convenience**
+* [ ] **Convenience**
     * It is usually painful to program, compare to implement with thread
 
 #### Multiple Process `(folk)`
