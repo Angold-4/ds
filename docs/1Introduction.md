@@ -72,7 +72,7 @@ Back to 2004, engineers in Google have implemented hundreds of special-purpose c
 **How to parallelize the computation, distribute the data, and handle failures**, soon becames a big question.<br>
 
 So they really needed some **kind of framework** that would make it easy to just have their engineers write the kind of guts of whatever analysis they wanted to do, like sort algorithm or a web index or link analyzer or whatever. <br>
-**Just write the guts of that application and not be able to run it on a thousands of computers without worrying about the details of how to spread the work over the thousands of computers how to organize whatever data movement was required, or how to cope with the inevitable failures.**
+**Just write the guts of that application and be able to run it on a thousands of computers without worrying about the details of how to spread the work over the thousands of computers how to organize whatever data movement was required, or how to cope with the inevitable failures.**
 
 
 #### In short, they were looking for a framework that would make it easy for non-specialists to be able to write and run giant distributed computations.
