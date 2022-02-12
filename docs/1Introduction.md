@@ -79,7 +79,8 @@ So they really needed some **kind of framework** that would make it easy to just
 
 
 ##### Solution: MapReduce 
-**[Link to the paper](papers/mapreduce.pdf)**
+* **[Link to the paper](papers/MapReduce/mapreduce.pdf)**
+* **[Link to my notes](papers/MapReduce/mapreduce.md)**
 
 ### Simple Example: Word Count
 
@@ -98,8 +99,8 @@ Reduce(k, v)
     emit(len(v))
 ```
 
-
 ![mapreduce](Sources/mapreduce.png)
+
 
 
 
