@@ -166,7 +166,7 @@ func worker(url string, ch chan []string, fetcher Fetcher) {
 func master(ch chan []string, fetcher Fetcher) {
     n := 1
     fetched := make(map[string]bool)
-    for urls := range ch {
+    for urls := range ch { // keep waiting until the break
 	for _, u := range urls {
 	    if fetched[u] == false {
 		fetched[u] = true
