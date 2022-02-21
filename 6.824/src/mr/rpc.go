@@ -9,6 +9,59 @@ package mr
 import "os"
 import "strconv"
 
+
+// Task type
+type TaskType int
+
+const (
+    Map     TaskType = 1
+    Reduce  TaskType = 2
+    Done    TaskType = 3
+)
+
+/*
+ * The first RPC
+ * GetTask RPCs are sent from an idle worker to coordinator to ask for the next task to perform
+ */
+
+type GetTaskArgs struct{}
+
+type GetTaskReply struct {
+    // what type of task is this?
+    TaskType TaskType
+
+    // task number of either map or reduce task
+    TaskNum int
+
+    // needed for Map (to know which file to write)
+    NReduceTasks int
+
+    // needed for Map (to know which file to read)
+    MapFile string
+
+    // needed for Reduce (to know how many intermediate map file to read)
+    NMapTasks int
+}
+
+
+/*
+ * The second RPC
+ * FinishedTask RPCS are sent from an idle worker to coordinator to indicate that a task has been completed
+ */
+
+ type FinishedTaskArgs struct {
+    // what type of task was the worker assigned?
+    TaskType TaskType
+
+    // which task was it ?
+    TaskNum int
+ }
+
+ // workers don't need to get a reply
+ type FinishedTaskReply struct {}
+
+
+
 //
 // example to show how to declare the arguments
 // and reply for an RPC.
