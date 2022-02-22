@@ -21,7 +21,7 @@ So they really needed some **kind of framework** that would make it easy to just
 **In a programmer's view, the computation recieves many files, and takes a set of input key/value pairs, then produces a set of output key/value pairs.**
 
 ### Example: word count
-![mapreduceex](../../Sources/mapreduceex.png)
+![mapreduceex](Sources/mapreduceex.png)
 
 #### Abstract view of a MapReduce job:
 
@@ -68,7 +68,7 @@ reduce(k, v)
 
 ## 3. Implementation Details
 
-![mapreduce](../../Sources/mapreduce.png)
+![mapreduce](Sources/mapreduce.png)
 
 ### 1. Runtime Details (paper's Figure 1):
 ****
@@ -176,7 +176,7 @@ We split the input into apporximately 64MB pieces (M = 15000), and the entire ou
 
 **Figure 2 shows the progress of the computation over time.**
 
-![grep](../../Sources/grep.png)
+![grep](Sources/grep.png)
 
 #### A Classic MapReduce Process:
 
@@ -203,7 +203,7 @@ We split the input into apporximately 64MB pieces (M = 15000), and the entire ou
 
 In this particular example, we use **TeraSort** as our algorithm.
 
-![sorta](../../Sources/sorta.png)
+![sorta](Sources/sorta.png)
 
 ****
 
@@ -214,7 +214,7 @@ There are two things in the graph need to be mentioned:
 
 2. **For the following figure, the graph on the right is the TeraSort in MapReduce without [Backup Tasks](### 5.Backup Tasks) that we mentioned before.<br>As we can see that, there are two peaks on the left graph and only one on the right, that is at the end the of all Map tasks, there will be some Backup Tasks that assigned by the Master to other already-finished (free) workers, to help avoid the "straggler" problem which we mentioned above.**<br>
 
-![input](../../Sources/input.png)
+![input](Sources/input.png)
 
 As expected, the finish time of MapReduce with backup tasks enabled finished about 960 seconds, which is about 44% faster than the backup tasks disabled MapReduce tasks.
 
@@ -222,7 +222,7 @@ As expected, the finish time of MapReduce with backup tasks enabled finished abo
 
 **The middle graph of Figure (a) shows the rate at which data is sent over the nework from the map tasks to the reduce tasks.**<br>
 
-![so](../../Sources/so.png)
+![so](Sources/so.png)
 
 The shuffling starts as soons as the first map task completes. Since the number of map tasks is much larger than reduce tasks, the first hump in the graph is for the first batch of approximately 1800 reduce tasks, then after this first batch fiinshed, which costs about 300 seconds, **then these Reduce workers write their sorted data to the final output files files by the reduce tasks. As we can see in the bottom graph.**<br>
 

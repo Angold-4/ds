@@ -79,8 +79,8 @@ So they really needed some **kind of framework** that would make it easy to just
 
 
 ##### Solution: MapReduce 
-* **[Link to the paper](papers/MapReduce/mapreduce.pdf)**
-* **[Link to my notes](papers/MapReduce/mapreduce.md)**
+* **[Link to the paper](../papers/MapReduce/mapreduce.pdf)**
+* **[Link to my notes](../papers/mapreduce.md)**
 
 ### Simple Example: Word Count
 
