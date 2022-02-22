@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:og="http://ogp.me/ns#"
+      xmlns:fb="https://www.facebook.com/2008/fbml">
+<head>
+    <title>Angold-4 Organization</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link href="../../../images/favicon.png" rel="icon">
+
+<link rel="canonical" href=".">
+        <meta name="author" content="Angold Wang" />
+
+    <meta property="og:site_name" content="Angold-4" />
+<!--     <meta property="og:type" content="article"/> -->
+    <meta property="og:title" content="Angold-4 Organization"/>
+    <meta property="og:url" content="."/>
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="../../../theme/css/bootstrap.flatly.min.css" type="text/css"/>
+    <link href="../../../theme/css/font-awesome.min.css" rel="stylesheet">
+<!--     <link href="https://cdnjs.cloudflare.com/ajax/libs/typicons/2.0.9/typicons.min.css" rel="stylesheet"> -->
+
+    <link href="../../../theme/css/pygments/monokai.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../theme/css/style.css" type="text/css"/>
+
+</head>
+<body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<!-- <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script> -->
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="angold4.org" class="navbar-brand">
+<img src="../../../images/logo.png" width="32"/> Angold4            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+			    <li><a href="../../../about.html">About</a>
+                            <li><a href="../../../projects.html">Projects</a>
+                            <li><a href="../../../osdi.html">OSDI</a>
+
+	    </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li> <a title="Youtube" href="https://www.youtube.com/channel/UC3ZAjh2LHhm-FrgxgBtgMzQ" target="_new"><i class="fa fa-youtube"></i> Youtube</a>
+		</li>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+	<section id="content" class="body">
+
+
+<h1>1. Introduction</h1>
+<h5>02/07/2022 By Angold Wang</h5>
+<h2>1. Distributed System</h2>
+<h3>What a Distributed System is?</h3>
+<p><strong>A set of cooperating computers that are communicating with each other over network to get some coherent task done.</strong></p>
+<h4>Examples</h4>
+<ul>
+<li>Storiage for big websites</li>
+<li>Big data computations (MapReduce)</li>
+<li>...</li>
+</ul>
+<blockquote>
+<p>if you are designing a system, like you need to solve some problem <strong>if you can possibly solve it on a single computer without building a distributed system, you should do it that way</strong>. And there are many many jobs you can get done on a single computer and it's always easier. (distributed system are not simpler)</p>
+</blockquote>
+<h3>Why People Need a Distributed System?</h3>
+<p>Usually, the high-level goal of building a distributed system is to get what people call <strong>scalable speed-up</strong>.</p>
+<ol>
+<li><strong>Parallelism</strong></li>
+<li><strong>Fault tolerate</strong></li>
+<li>Physical reason</li>
+<li>Security / isolated</li>
+</ol>
+<h4>Challenges</h4>
+<ul>
+<li><strong>Concurrency</strong></li>
+<li>Partial failure</li>
+<li>Performance</li>
+</ul>
+<h3>To Build such Abstractions...</h3>
+<blockquote>
+<p>The applications are going to use the <strong>infrastructure</strong> that we're thinking about in this course.</p>
+</blockquote>
+<ul>
+<li><strong>Storage</strong></li>
+<li>Communication</li>
+<li><strong>Computation</strong></li>
+</ul>
+<blockquote>
+<p>Our goal is to be able to <strong>discover abstractions where use of simplifying the interface to distributed storage and computation infrastructure</strong></p>
+</blockquote>
+<blockquote>
+<p>So that it is easy to build application on top of it, and what that really means is that <strong>we'd like to build abstraction that hide the distributed nature of these systems</strong></p>
+</blockquote>
+<p><strong>&quot;We'd love to be able to build interfaces that look and act just like non-distributed storage and computation systems but are actually with vast and extremely high performance fault tolerant distributed systems underneath.&quot;</strong></p>
+<h4>Performance</h4>
+<ul>
+<li><strong>Scalability</strong>: (not infinite)<!-- raw HTML omitted -->
+<strong>2x computers -&gt; 2x throughput</strong> (huge win)</li>
+</ul>
+<h4>Fault Tolerance</h4>
+<ul>
+<li>Big distributed systems: <strong>failure problems just happen all the time!</strong></li>
+</ul>
+<blockquote>
+<p><strong>Big scale turns problems from very rare events you don't have to worry about that much</strong> (one server runs in a room, only one person will visit its website) <strong>into just constant problems that means the failure has to be really has to be built into the design</strong></p>
+</blockquote>
+<h5>Availability:</h5>
+<p>in some faliure circumstance, the system will keep operating despite the failure while providing undamaged service.</p>
+<h5>Recoverability:</h5>
+<p>if something goes wrong, maybe the server will stop working that it'll simply stop responding to requests and it will wait for someone to come along and repair whatever went wrong, but after the repair occurs, the system will be able to continue as if nothing bad had gone wrong.</p>
+<h4>Consistency</h4>
+<p>Communication problem (Weak and Strong)</p>
+<h2>2. MapReduce</h2>
+<p>Back to 2004, engineers in Google have implemented hundreds of special-purpose computations that process large amounts of raw data. Such as building a index of the web, and handle crawled documents, web requests logs, etc.<!-- raw HTML omitted -->
+<strong>However, the input data is usually large and the computations have to be distributed across hundreds or thousands of machines in order to finish in a reasonable amount of time.</strong><!-- raw HTML omitted -->
+<strong>How to parallelize the computation, distribute the data, and handle failures</strong>, soon becames a big question.<!-- raw HTML omitted --></p>
+<p>So they really needed some <strong>kind of framework</strong> that would make it easy to just have their engineers write the kind of guts of whatever analysis they wanted to do, like sort algorithm or a web index or link analyzer or whatever. <!-- raw HTML omitted -->
+<strong>Just write the guts of that application and be able to run it on a thousands of computers without worrying about the details of how to spread the work over the thousands of computers how to organize whatever data movement was required, or how to cope with the inevitable failures.</strong></p>
+<h4>In short, they were looking for a framework that would make it easy for non-specialists to be able to write and run giant distributed computations.</h4>
+<h5>Solution: MapReduce</h5>
+<ul>
+<li><strong><a href="../papers/MapReduce/mapreduce.pdf">Link to the paper</a></strong></li>
+<li><strong><a href="../papers/mapreduce.md">Link to my notes</a></strong></li>
+</ul>
+<h3>Simple Example: Word Count</h3>
+<p><img src="Sources/mapreduceex.png" alt="mapreduceex"></p>
+<p>This above figure shows a simple programmers'view of <strong>MapReduce</strong>.<!-- raw HTML omitted -->
+<strong>In order to count words in some very huge files (TB), the programmer just need to write this kind of psudo-code:</strong></p>
+<pre><code>Map(k, v)
+    split v into words
+    for each word w
+            emit(w, &quot;1&quot;)
+
+
+Reduce(k, v)
+    emit(len(v))
+</code></pre>
+<p><img src="Sources/mapreduce.png" alt="mapreduce"></p>
+	</section>
+	</div>
+    </div>
+</div>
+<footer>
+   <div class="well well-lg" id="footer-well">
+      <div class="container">
+
+
+      <div class="row">
+         <div class="col-xs-6">
+            <a href="https://angold4.org" title="Angold-4 Organization" class="image-link"><img src="../../../images/logo.png" class="cmudb-logo" /></a>
+         </div>
+         <div class="col-xs-6">
+            <p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p>
+        </div>
+      </div>
+   </div>
+   </div>
+</footer>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="../../../theme/js/bootstrap.min.js"></script>
+
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="../../../theme/js/respond.min.js"></script>
+
+<!-- Fix scrolling issues to internal HREFs that get positioned behind navbar -->
+<!-- http://stackoverflow.com/questions/10732690/offsetting-an-html-anchor-to-adjust-for-fixed-header -->
+<script src="../../../theme/js/href_scroll.js"></script>
+
+<!-- You know what this is and you know what he did to me... -->
+<script src="../../../theme/js/tim-kraska-betrayed-me.js"></script>
+</body>
+</html>

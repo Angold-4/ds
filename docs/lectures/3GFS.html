@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:og="http://ogp.me/ns#"
+      xmlns:fb="https://www.facebook.com/2008/fbml">
+<head>
+    <title>Angold-4 Organization</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link href="../../../images/favicon.png" rel="icon">
+
+<link rel="canonical" href=".">
+        <meta name="author" content="Angold Wang" />
+
+    <meta property="og:site_name" content="Angold-4" />
+<!--     <meta property="og:type" content="article"/> -->
+    <meta property="og:title" content="Angold-4 Organization"/>
+    <meta property="og:url" content="."/>
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="../../../theme/css/bootstrap.flatly.min.css" type="text/css"/>
+    <link href="../../../theme/css/font-awesome.min.css" rel="stylesheet">
+<!--     <link href="https://cdnjs.cloudflare.com/ajax/libs/typicons/2.0.9/typicons.min.css" rel="stylesheet"> -->
+
+    <link href="../../../theme/css/pygments/monokai.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../theme/css/style.css" type="text/css"/>
+
+</head>
+<body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<!-- <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script> -->
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="angold4.org" class="navbar-brand">
+<img src="../../../images/logo.png" width="32"/> Angold4            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+			    <li><a href="../../../about.html">About</a>
+                            <li><a href="../../../projects.html">Projects</a>
+                            <li><a href="../../../osdi.html">OSDI</a>
+
+	    </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li> <a title="Youtube" href="https://www.youtube.com/channel/UC3ZAjh2LHhm-FrgxgBtgMzQ" target="_new"><i class="fa fa-youtube"></i> Youtube</a>
+		</li>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+	<section id="content" class="body">
+
+
+<h1>3. Google File Systems</h1>
+<h5>02/22/2022 By Angold Wang</h5>
+<h2>1. Distributed Storage</h2>
+<h3>i. Why do we need distributed storage?</h3>
+<p><img src="Sources/sorta.png" alt="sorta"></p>
+<ul>
+<li><strong>We want to store more data</strong>
+<ul>
+<li>store data across multiple servers</li>
+</ul>
+</li>
+<li><strong>We want high performance (throughput)</strong>
+<ul>
+<li>split the request data into pieces and read them concurrently from different servers.</li>
+<li><strong>the mapreduce example</strong>:
+<ul>
+<li>The throughput of single SSD is <strong><code>10MB/s</code></strong>.</li>
+<li>If we split the big data set into <strong><code>1000</code></strong> servers.</li>
+<li>We can achieve <strong><code>10000MB/s</code></strong> throughput by reading from 1000 disks concurrently.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3>ii. Conumndrum of High-Performance</h3>
+<ul>
+<li><strong>we want high performance</strong> =&gt; <strong>shared data over many servers</strong></li>
+<li><strong>many servers</strong> =&gt; <strong>constant faults (some machines are gonna crash)</strong></li>
+<li><strong>fault tolerance</strong> =&gt; <strong>replication</strong></li>
+<li><strong>replication</strong> =&gt; <strong>potential inconsistencies</strong></li>
+<li><strong>better consistency</strong> =&gt; <strong>low performance</strong></li>
+</ul>
+<h3>iii. Consistency</h3>
+<h4>Strong Consistency</h4>
+<p><img src="Sources/strongcon.png" alt="strongcon"></p>
+<ul>
+<li><strong>Suppose Client1 and Client2 write concurrently.</strong></li>
+<li><strong>After the writes have completed, Client3 and Client4 read. What can they see?</strong></li>
+</ul>
+<p><strong>Answer: either 1 or 2, but both have to see the same value. This is a &quot;strong&quot; concurrency model.</strong></p>
+<h4>In a distributed system ...</h4>
+<p><strong>Replication for fault-tolerance makes strong consistency tricky.</strong></p>
+<p><img src="Sources/replicacon.png" alt="replicacon"></p>
+<ul>
+<li><strong>Client1 and Client2 send writes to both, in parallel</strong></li>
+</ul>
+<p><strong>This time, both Client3 and Client4 will also see either 1 or 2, but no guarrentee that they will see the same value. That is not a strong consistency.</strong></p>
+<p><strong>Better consistency ususlly requires communication to ensure the replicas stay in sync, which can be slow. And there are lots of tradeoffs possible between performance and consistency.</strong></p>
+	</section>
+	</div>
+    </div>
+</div>
+<footer>
+   <div class="well well-lg" id="footer-well">
+      <div class="container">
+
+
+      <div class="row">
+         <div class="col-xs-6">
+            <a href="https://angold4.org" title="Angold-4 Organization" class="image-link"><img src="../../../images/logo.png" class="cmudb-logo" /></a>
+         </div>
+         <div class="col-xs-6">
+            <p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p>
+        </div>
+      </div>
+   </div>
+   </div>
+</footer>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="../../../theme/js/bootstrap.min.js"></script>
+
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="../../../theme/js/respond.min.js"></script>
+
+<!-- Fix scrolling issues to internal HREFs that get positioned behind navbar -->
+<!-- http://stackoverflow.com/questions/10732690/offsetting-an-html-anchor-to-adjust-for-fixed-header -->
+<script src="../../../theme/js/href_scroll.js"></script>
+
+<!-- You know what this is and you know what he did to me... -->
+<script src="../../../theme/js/tim-kraska-betrayed-me.js"></script>
+</body>
+</html>

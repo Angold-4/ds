@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:og="http://ogp.me/ns#"
+      xmlns:fb="https://www.facebook.com/2008/fbml">
+<head>
+    <title>Angold-4 Organization</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link href="../../../images/favicon.png" rel="icon">
+
+<link rel="canonical" href=".">
+        <meta name="author" content="Angold Wang" />
+
+    <meta property="og:site_name" content="Angold-4" />
+<!--     <meta property="og:type" content="article"/> -->
+    <meta property="og:title" content="Angold-4 Organization"/>
+    <meta property="og:url" content="."/>
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="../../../theme/css/bootstrap.flatly.min.css" type="text/css"/>
+    <link href="../../../theme/css/font-awesome.min.css" rel="stylesheet">
+<!--     <link href="https://cdnjs.cloudflare.com/ajax/libs/typicons/2.0.9/typicons.min.css" rel="stylesheet"> -->
+
+    <link href="../../../theme/css/pygments/monokai.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../theme/css/style.css" type="text/css"/>
+
+</head>
+<body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<!-- <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script> -->
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="angold4.org" class="navbar-brand">
+<img src="../../../images/logo.png" width="32"/> Angold4            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+			    <li><a href="../../../about.html">About</a>
+                            <li><a href="../../../projects.html">Projects</a>
+                            <li><a href="../../../osdi.html">OSDI</a>
+
+	    </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li> <a title="Youtube" href="https://www.youtube.com/channel/UC3ZAjh2LHhm-FrgxgBtgMzQ" target="_new"><i class="fa fa-youtube"></i> Youtube</a>
+		</li>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+	<section id="content" class="body">
+
+
+<h1>2. RPC and Threads</h1>
+<h5>09/02/2022 By Angold Wang</h5>
+<h2>1. RPC and Threads in Golang</h2>
+<h3>1. Why Go?</h3>
+<ul>
+<li>Good support for threads (go routine)</li>
+<li>Convenient RPC</li>
+<li>Threads + GC is particularly attractive</li>
+<li>Relatively Simple (easy to debug)</li>
+</ul>
+<h3>2. Threads</h3>
+<h5>&quot;Allow different parts of the program to sort of be in its own point in a different activity.&quot;</h5>
+<h5>Each thread includes some per-thread state: <code>(pc, reg, stack)</code>.</h5>
+<ul>
+<li>
+<p>[x] <strong>I/O concurrency</strong></p>
+<ul>
+<li>While some threads are waiting for I/O, other threads can utilize the CPU resources.</li>
+</ul>
+</li>
+<li>
+<p>[x] <strong>Parallelism</strong></p>
+<ul>
+<li>Execute code in parallel on several cores.</li>
+</ul>
+</li>
+<li>
+<p>[x] <strong>Convinience</strong></p>
+<ul>
+<li>relatively simple to programming (compare with event-driven process)</li>
+</ul>
+</li>
+</ul>
+<p>To have a better understanding of threads, let's compare to its alternative:</p>
+<h4>Event-driven Process</h4>
+<h5>&quot;Way that write code that explicitly interleaves activities, in a single thread.&quot;</h5>
+<ul>
+<li>
+<p><strong>Implementation Details:</strong></p>
+<ul>
+<li>keep a table of each of state about each activity</li>
+<li>One &quot;event&quot; loop that:
+<ol>
+<li>Checks for new input for each activity</li>
+<li>Does the next step for each activity</li>
+<li>Update the state table</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>
+<p>[x] <strong>I/O concurrency</strong></p>
+<ul>
+<li>The program can pick current unblocked activity to run (just like in threads)</li>
+<li>It can eliminates thread costs (which can be substantial)</li>
+</ul>
+</li>
+<li>
+<p>[ ] <strong>Parallelism</strong></p>
+<ul>
+<li>There are no parallelism in multi-core machine (Only one thread)</li>
+</ul>
+</li>
+<li>
+<p>[ ] <strong>Convenience</strong></p>
+<ul>
+<li>It is usually painful to program, compare to implement with thread</li>
+</ul>
+</li>
+</ul>
+<h4>Multiple Process <code>(folk)</code></h4>
+<h5>&quot;Folk multiple process, just runs like multiple threads, which will gives you thread-like I/O concurrency, and parallelism.&quot;</h5>
+<p>Although in user space, thread seems look like is implemented by the language itself, i.e. Some OS books says &quot;the kernel is not aware of the existence of threads.&quot;<!-- raw HTML omitted -->
+<strong>In my opinion, thread is some sort of the minimum-executable unit in the machine.<!-- raw HTML omitted --></strong>
+<strong>Which means, in some low-level perspective, a thread has no difference than a process, They are all just executable routines with its own states.</strong><!-- raw HTML omitted --></p>
+<blockquote>
+<p>i.e. For instance, think of a multi-core machine, when there are multiple threads runs on it, it just like multiple processes with same address space.</p>
+</blockquote>
+<h5>From an Operating System point of view, there are two stages of scheduling: First, the Process scheduler pick a process to run, which contains one or more routines and its own address space. Second, for each process, the written language implements the details of their execution (threads or whatever).</h5>
+<p>Compare to multi-threading, when there are multiple processes runs in different cores, the communication between them costs much.(compare to threads, since threads are on the same address space.) And the context switching between each process also costs much (OS sheduler v.s. Thread scheduler in language).</p>
+<h5>Threading Challenges</h5>
+<p>Threads are convenient, because a lot of times they allow you to write the code for each thread just as if it were a pretty ordinary sequenial program.<!-- raw HTML omitted --></p>
+<p>Since all threads in the same process are in the same address space. There are also some unexpected errors occurs:</p>
+<ul>
+<li>Race Condition</li>
+<li>Coordination</li>
+<li>Dead Lock</li>
+</ul>
+	</section>
+	</div>
+    </div>
+</div>
+<footer>
+   <div class="well well-lg" id="footer-well">
+      <div class="container">
+
+
+      <div class="row">
+         <div class="col-xs-6">
+            <a href="https://angold4.org" title="Angold-4 Organization" class="image-link"><img src="../../../images/logo.png" class="cmudb-logo" /></a>
+         </div>
+         <div class="col-xs-6">
+            <p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p>
+        </div>
+      </div>
+   </div>
+   </div>
+</footer>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="../../../theme/js/bootstrap.min.js"></script>
+
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="../../../theme/js/respond.min.js"></script>
+
+<!-- Fix scrolling issues to internal HREFs that get positioned behind navbar -->
+<!-- http://stackoverflow.com/questions/10732690/offsetting-an-html-anchor-to-adjust-for-fixed-header -->
+<script src="../../../theme/js/href_scroll.js"></script>
+
+<!-- You know what this is and you know what he did to me... -->
+<script src="../../../theme/js/tim-kraska-betrayed-me.js"></script>
+</body>
+</html>
