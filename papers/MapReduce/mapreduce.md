@@ -71,7 +71,6 @@ reduce(k, v)
 ![mapreduce](Sources/mapreduce.png)
 
 ### 1. Runtime Details (paper's Figure 1):
-****
 1. **The input and output are stored on a cluster file system called GFS (Google File System), where the part of MapReduce library splites files over many servers, in typically 16MB to 64MB piece. It then starts up many copies of the prgram on a cluster of machines.** 
 
 2. **One of the copies of the program is special -> the master, the rest are workers that are assigned work by the master. Let's say there are M map tasks and R reduce tasks to assign. The master pick idle workers and assigns each one a map task or a reduce task.**
@@ -87,7 +86,6 @@ reduce(k, v)
 **Finally, when all map tasks and reduce tasks have been compeleted, the master wakes up the user program. At this point, the MapReduce call in the user program returns back to the user code.**
 
 ### 2. Fault Tolerance
-****
 
 Since the MapReduce library is designed to help process very large amounts of data using hundreds or thousands of machines, the library must tolerate machine failures gracefullly. (Must insert fault tolerance into its design)
 
@@ -119,7 +117,6 @@ The master keeps several data structures.<br>
 
 
 ### 3. Locality
-****
 
 ##### What will likely limit the performance of MapReduce?
 **In 2004, authors were limited by network capacity, the paper's root switch: 100 to 200 gigabits/second, total 1800 machines, so 55 megabits/second/machine. which is relatively small (e.g. much less than disk or RAM speed)**
@@ -130,7 +127,6 @@ The master keeps several data structures.<br>
 
 
 ### 4. Task Granularity
-****
 
 ##### How does MR get good load balance?
 
@@ -145,7 +141,6 @@ In practice, we often perform MapReduce computations with M = 200,000 and R = 5,
 
 
 ### 5. Backup Tasks
-****
 
 **One of the common causes that lengthens the total time taken for a MapReduce operation is a "straggler": a machine that takses an unusually long time to complete its works.**<br>
 
@@ -166,7 +161,6 @@ First, let me introduce the configuration of cluster, which is also listed in th
 
 
 ### 1. Grep
-****
 
 **[Grep](https://en.wikipedia.org/wiki/Grep) is a program for searching plain-text data sets for lines that match a regular expression.**<br>
 
@@ -190,7 +184,6 @@ We split the input into apporximately 64MB pieces (M = 15000), and the entire ou
 
 
 ### 2. Sort
-****
 
 **The Sort program sorts approximately 1 terabyte of data.**<br>
 **You may wonder what sorting algorithm does google use in MapReduce:**<br>
@@ -205,7 +198,6 @@ In this particular example, we use **TeraSort** as our algorithm.
 
 ![sorta](Sources/sorta.png)
 
-****
 
 **The top graph of Figure (a) shows the rate at which input is read, as we can see, the rate peaks at about 13GB/s, and then all Map tasks finished before 200 seconds have elapsed.**<br>
 
@@ -217,8 +209,6 @@ There are two things in the graph need to be mentioned:
 ![input](Sources/input.png)
 
 As expected, the finish time of MapReduce with backup tasks enabled finished about 960 seconds, which is about 44% faster than the backup tasks disabled MapReduce tasks.
-
-****
 
 **The middle graph of Figure (a) shows the rate at which data is sent over the nework from the map tasks to the reduce tasks.**<br>
 

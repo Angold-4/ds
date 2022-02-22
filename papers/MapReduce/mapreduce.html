@@ -126,7 +126,6 @@ reduce(k, v)
 <h2>3. Implementation Details</h2>
 <p><img src="Sources/mapreduce.png" alt="mapreduce"></p>
 <h3>1. Runtime Details (paper's Figure 1):</h3>
-<hr>
 <ol>
 <li>
 <p><strong>The input and output are stored on a cluster file system called GFS (Google File System), where the part of MapReduce library splites files over many servers, in typically 16MB to 64MB piece. It then starts up many copies of the prgram on a cluster of machines.</strong></p>
@@ -149,7 +148,6 @@ reduce(k, v)
 </ol>
 <p><strong>Finally, when all map tasks and reduce tasks have been compeleted, the master wakes up the user program. At this point, the MapReduce call in the user program returns back to the user code.</strong></p>
 <h3>2. Fault Tolerance</h3>
-<hr>
 <p>Since the MapReduce library is designed to help process very large amounts of data using hundreds or thousands of machines, the library must tolerate machine failures gracefullly. (Must insert fault tolerance into its design)</p>
 <p>The master keeps several data structures.<!-- raw HTML omitted -->
 <strong>For each map task and reduce task. it stores the state (idle, in-progress, or completed), and the identity of the worker machine.</strong></p>
@@ -174,7 +172,6 @@ reduce(k, v)
 <li><strong>If the master task dies, a new copy can be started fromm the last checkpointed state.</strong></li>
 </ul>
 <h3>3. Locality</h3>
-<hr>
 <h5>What will likely limit the performance of MapReduce?</h5>
 <p><strong>In 2004, authors were limited by network capacity, the paper's root switch: 100 to 200 gigabits/second, total 1800 machines, so 55 megabits/second/machine. which is relatively small (e.g. much less than disk or RAM speed)</strong></p>
 <h5>How MR minimize network use?</h5>
@@ -183,7 +180,6 @@ reduce(k, v)
 <li><strong>Intermediate data goes over network just once. which from Map workers' local disk -&gt; Reduce workers, rather than using GFS.</strong></li>
 </ul>
 <h3>4. Task Granularity</h3>
-<hr>
 <h5>How does MR get good load balance?</h5>
 <p><strong>Wasteful and slow if N-1 servers have to wait for 1 slow server to finish. But the fact is that some tasks likely take longer than others.</strong><!-- raw HTML omitted --></p>
 <p><strong>We subdivide the map phase into M pieces and the reduce phase into R pieces. Ideally, M and R should be much larger than the number of worker machines. (i.e. many more tasks than workers).<!-- raw HTML omitted --></strong></p>
@@ -191,7 +187,6 @@ reduce(k, v)
 <p>But there are also some limitations of how large M and R can be, some kind of &quot;trade-off&quot;, since the Master must make <code>O(M + R)</code> scheduling decisions.<!-- raw HTML omitted -->
 In practice, we often perform MapReduce computations with M = 200,000 and R = 5,000 using 2,000 worker machines.</p>
 <h3>5. Backup Tasks</h3>
-<hr>
 <p><strong>One of the common causes that lengthens the total time taken for a MapReduce operation is a &quot;straggler&quot;: a machine that takses an unusually long time to complete its works.</strong><!-- raw HTML omitted --></p>
 <p><strong>Which means, a machine can compelete its works, but costs too much times than other machine doing the same job. The reason of that is usually some correctable errors that slow its performance, like disk problem, or the competition for CPU, memory, network bandwidth.</strong><!-- raw HTML omitted --></p>
 <p><strong>The engineers in Google have a general mechanism to alleviate the problem of stragglers: When a MapReduce operation is close to completion, the Master schedules backup executions of the remaining</strong> <em>in-progress</em> <strong>tasks. The task is marked as completed whenever either the primary of the backup execution completions.</strong></p>
@@ -205,7 +200,6 @@ First, let me introduce the configuration of cluster, which is also listed in th
 <li>All of the machines were in the same hosting facility.</li>
 </ul>
 <h3>1. Grep</h3>
-<hr>
 <p><strong><a href="https://en.wikipedia.org/wiki/Grep">Grep</a> is a program for searching plain-text data sets for lines that match a regular expression.</strong><!-- raw HTML omitted --></p>
 <p>Let's say, in this scenario, the <em>grep</em> program scans through 10^10 100 byte (0.96 TB) records. Searching for a relatively rare three-character pattern (the pattern occurs in 92,337 records).<!-- raw HTML omitted --></p>
 <p>We split the input into apporximately 64MB pieces (M = 15000), and the entire output is placed in one file (R = 1).</p>
@@ -225,7 +219,6 @@ First, let me introduce the configuration of cluster, which is also listed in th
 </ol>
 <p><strong>So, It takes about 150 seconds to finish all the Grep tasks</strong></p>
 <h3>2. Sort</h3>
-<hr>
 <p><strong>The Sort program sorts approximately 1 terabyte of data.</strong><!-- raw HTML omitted -->
 <strong>You may wonder what sorting algorithm does google use in MapReduce:</strong><!-- raw HTML omitted --></p>
 <h4>1. TeraSort</h4>
@@ -238,7 +231,6 @@ First, let me introduce the configuration of cluster, which is also listed in th
 </blockquote>
 <p>In this particular example, we use <strong>TeraSort</strong> as our algorithm.</p>
 <p><img src="Sources/sorta.png" alt="sorta"></p>
-<hr>
 <p><strong>The top graph of Figure (a) shows the rate at which input is read, as we can see, the rate peaks at about 13GB/s, and then all Map tasks finished before 200 seconds have elapsed.</strong><!-- raw HTML omitted --></p>
 <p>There are two things in the graph need to be mentioned:</p>
 <ol>
@@ -251,7 +243,6 @@ First, let me introduce the configuration of cluster, which is also listed in th
 </ol>
 <p><img src="Sources/input.png" alt="input"></p>
 <p>As expected, the finish time of MapReduce with backup tasks enabled finished about 960 seconds, which is about 44% faster than the backup tasks disabled MapReduce tasks.</p>
-<hr>
 <p><strong>The middle graph of Figure (a) shows the rate at which data is sent over the nework from the map tasks to the reduce tasks.</strong><!-- raw HTML omitted --></p>
 <p><img src="Sources/so.png" alt="so"></p>
 <p>The shuffling starts as soons as the first map task completes. Since the number of map tasks is much larger than reduce tasks, the first hump in the graph is for the first batch of approximately 1800 reduce tasks, then after this first batch fiinshed, which costs about 300 seconds, <strong>then these Reduce workers write their sorted data to the final output files files by the reduce tasks. As we can see in the bottom graph.</strong><!-- raw HTML omitted --></p>
