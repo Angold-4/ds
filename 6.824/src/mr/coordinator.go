@@ -153,16 +153,22 @@ func (c *Coordinator) Example(args *ExampleArgs, reply *ExampleReply) error {
 // start a thread that listens for RPCs from worker.go
 //
 func (c *Coordinator) server() {
+
+	// Register publishes the receiver's methods in the DefaultServer.
 	rpc.Register(c)
+
 	rpc.HandleHTTP()
+
 	//l, e := net.Listen("tcp", ":1234")
 	sockname := coordinatorSock()
 	os.Remove(sockname)
-	l, e := net.Listen("unix", sockname)
+	// Listen specify the addr
+	l, e := net.Listen("unix", sockname) // l stands for listener 
 	if e != nil {
 		log.Fatal("listen error:", e)
 	}
-	go http.Serve(l, nil)
+
+	go http.Serve(l, nil) // k
 }
 
 //

@@ -19,8 +19,11 @@ const (
     Done    TaskType = 3
 )
 
+// Step 1, implement RPC structs
+
 /*
  * The first RPC
+ * idle worker -> coordinator
  * GetTask RPCs are sent from an idle worker to coordinator to ask for the next task to perform
  */
 
@@ -44,8 +47,10 @@ type GetTaskReply struct {
 }
 
 
+
 /*
  * The second RPC
+ * finished worker -> coordinator
  * FinishedTask RPCS are sent from an idle worker to coordinator to indicate that a task has been completed
  */
 
@@ -59,7 +64,6 @@ type GetTaskReply struct {
 
  // workers don't need to get a reply
  type FinishedTaskReply struct {}
-
 
 
 //

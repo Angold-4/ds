@@ -20,8 +20,9 @@ func main() {
 		os.Exit(1)
 	}
 
-	m := mr.MakeCoordinator(os.Args[1:], 10)
+	m := mr.MakeCoordinator(os.Args[1:], 10) // 10 is the number of reduce task to use
 	for m.Done() == false {
+	    // every seconds check whether whole tasks finised
 		time.Sleep(time.Second)
 	}
 

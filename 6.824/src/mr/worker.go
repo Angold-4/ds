@@ -21,6 +21,8 @@ type KeyValue struct {
 //
 // use ihash(key) % NReduce to choose the reduce
 // task number for each KeyValue emitted by Map.
+// same key will be assigned into same tmpFile
+// and this split way is pretty avg
 //
 func ihash(key string) int {
 	h := fnv.New32a()
@@ -88,7 +90,7 @@ func performMap(filename string, taskNum int, nReduceTasks int, mapf func(string
 	tmpFiles = append(tmpFiles, tmpFile)
 	tmpFilename := tmpFile.Name()
 	tmpFilenames = append(tmpFilenames, tmpFilename)
-	enc := json.NewEncoder(tmpFile)
+	enc := json.NewEncoder(tmpFile) // will write this kv into tmpfile
 	encoders = append(encoders, enc)
     }
 
@@ -180,6 +182,7 @@ func Worker(mapf func(string, string) []KeyValue,
 	    reply := GetTaskReply{}
 
 	    // this will wait until we get assigned a task
+	    // call will block until the coordinator reply
 	    call("Coordinator.HandleGetTask", &args, &reply)
 
 	    switch reply.TaskType {
@@ -239,14 +242,14 @@ func CallExample() {
 //
 func call(rpcname string, args interface{}, reply interface{}) bool {
 	// c, err := rpc.DialHTTP("tcp", "127.0.0.1"+":1234")
-	sockname := coordinatorSock()
-	c, err := rpc.DialHTTP("unix", sockname)
+	sockname := coordinatorSock() // cook up a tmp socket
+	c, err := rpc.DialHTTP("unix", sockname) // connects to an HTTP RPC server at the specified network address
 	if err != nil {
 		log.Fatal("dialing:", err)
 	}
 	defer c.Close()
 
-	err = c.Call(rpcname, args, reply)
+	err = c.Call(rpcname, args, reply) // call that rpc function 
 	if err == nil {
 		return true
 	}
