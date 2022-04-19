@@ -85,6 +85,10 @@ reduce(k, v)
 
 **Finally, when all map tasks and reduce tasks have been compeleted, the master wakes up the user program. At this point, the MapReduce call in the user program returns back to the user code.**
 
+**[One way to implement Mapreduce](https://github.com/Angold-4/ds/tree/main/6.824/src)** (Using RPC and Threads in golang):
+
+![gpmgoroutine](../../docs/lectures/Sources/gpmgoroutine.png)
+
 ### 2. Fault Tolerance
 
 Since the MapReduce library is designed to help process very large amounts of data using hundreds or thousands of machines, the library must tolerate machine failures gracefullly. (Must insert fault tolerance into its design)
