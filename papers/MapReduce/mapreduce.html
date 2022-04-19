@@ -41,15 +41,14 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a href="http://angold4.org" class="navbar-brand">
+            <a href="./" class="navbar-brand">
 <img src="../../../images/logo.png" width="32"/> Angold4            </a>
         </div>
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav">
-			    <li><a href="../../../about.html">About</a>
-                            <li><a href="../../../blogs.html">Blogs</a>
-                            <li><a href="../../../projects.html">Projects</a>
-
+                            <li><a href="./projects.html">Projects</a>
+                            <li><a href="./osdi.html">OSDI</a>
+			    <li><a href="./members.html">Members</a>
 	    </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li> <a title="Youtube" href="https://www.youtube.com/channel/UC3ZAjh2LHhm-FrgxgBtgMzQ" target="_new"><i class="fa fa-youtube"></i> Youtube</a>
@@ -147,6 +146,8 @@ reduce(k, v)
 </li>
 </ol>
 <p><strong>Finally, when all map tasks and reduce tasks have been compeleted, the master wakes up the user program. At this point, the MapReduce call in the user program returns back to the user code.</strong></p>
+<p><strong><a href="https://github.com/Angold-4/ds/tree/main/6.824/src">One way to implement Mapreduce</a></strong> (Using RPC and Threads in golang):</p>
+<p><img src="../../docs/lectures/Sources/gpmgoroutine.png" alt="gpmgoroutine"></p>
 <h3>2. Fault Tolerance</h3>
 <p>Since the MapReduce library is designed to help process very large amounts of data using hundreds or thousands of machines, the library must tolerate machine failures gracefullly. (Must insert fault tolerance into its design)</p>
 <p>The master keeps several data structures.<!-- raw HTML omitted -->
@@ -258,6 +259,24 @@ First, let me introduce the configuration of cluster, which is also listed in th
 	</section>
 	</div>
     </div>
+
+<div id="disqus_thread"></div>
+<script>
+    var disqus_config = function () {
+this.page.url = "https://angold4.org/ds/papars/MapReduce/mapreduce.html"
+this.page.identifier = "ds/papars/MapReduce/mapreduce.html"
+
+    };
+    (function() { // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    s.src = 'https://angold.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
 </div>
 <footer>
    <div class="well well-lg" id="footer-well">
@@ -289,3 +308,4 @@ First, let me introduce the configuration of cluster, which is also listed in th
 <script src="../../../theme/js/tim-kraska-betrayed-me.js"></script>
 </body>
 </html>
+
