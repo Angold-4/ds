@@ -30,8 +30,10 @@
     * **Explicit dependencies to enable faster builds.**
 
 
+## 2. Quotes
 
+* **Way I like to think of this entire world of programming is a vector space of very high dimension, and what you want to do is define the basis set that covers that vertor space, so that you can write the program you want by combining the apporpriate orthogonal set of features.** And what happends when you add features for expressiveness or for fun is tends to add more non basis vectors into that space and so there become many paths to get to a particular solution. [by Rob Pike]
 
-
+* As a programmer, we tend to spend way more time reading other people's code than writing code.
 
 
