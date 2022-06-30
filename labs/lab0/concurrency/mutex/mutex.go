@@ -6,6 +6,8 @@ import (
     "time"
 )
 
+// Lock protect invariants
+
 // SafeCounter is safe to use concurrently
 type SafeCounter struct {
     mu sync.Mutex
