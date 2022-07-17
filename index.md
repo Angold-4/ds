@@ -1,6 +1,11 @@
 # ds
 
-* Notes about **Distributed Systems**
+* Notes related to **Database Systems**, **Distributed Systems** and **Computer Networks**
+
+## Computer Networks Notes by A.W
+**[Computer Networking A Top-down Approach](papers/Computer Networking _ A Top Down Approach, 7th, converted.pdf)**
+
+* **1. [Introduction to Computer Networks](docs/15441/1Intro.html)**
 
 ## Lectures (MIT 6.824)
 * **1. [Introduction](docs/lectures/1Introduction.html)**
