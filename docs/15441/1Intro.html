@@ -210,12 +210,22 @@ network and a direct ancestor of today's public Internet.</p>
 <h4>Transport Layer</h4>
 <p>The IP layer doesn't give any guarentee!! Since packets can arrive out of order, or they can be lost. <strong>The transport layer wants to makes up for this, which is implemented in code running in end hosts.</strong></p>
 <ul>
-<li><strong>It can establish a connection between two end points.</strong></li>
-<li><strong>It can re-transmit data that is lost.</strong></li>
-<li><strong>It can put packets back together in the right order.</strong></li>
+<li>
+<p><strong>It can establish a connection between two end points.</strong></p>
+</li>
+<li>
+<p><strong>It can re-transmit data that is lost.</strong></p>
+</li>
+<li>
+<p><strong>It can put packets back together in the right order.</strong></p>
+</li>
+<li>
+<p><strong>TCP</strong>: Reliable In-Order Byte Stream</p>
+</li>
+<li>
+<p><strong>UDP</strong>: No guarantees</p>
+</li>
 </ul>
-<h5>TCP: Reliable In-Order Byte Stream</h5>
-<h5>UDP: No guarantees</h5>
 <h4>Application Layer</h4>
 <p>The application layer is where network applications and their application-layer protocols reside. The Internet’s application layer includes many protocols, such as the <strong>HTTP protocol</strong> (which provides for Web document request and transfer), <strong>SMTP</strong> (which provides for the transfer of e-mail messages), and <strong>FTP</strong> (which provides for the transfer of files between two end systems).</p>
 <h2>3. Encapsulation</h2>
@@ -250,6 +260,7 @@ network and a direct ancestor of today's public Internet.</p>
 <p>The datagram is then passed to the link layer, which (of course!) will add its own link-layer header information and create a link-layer frame. Thus, we see that at each layer, a packet has two types of fields: <strong>header</strong> fields and a <strong>payload</strong> field. The payload is typically a packet from the layer above.</p>
 </li>
 </ul>
+<p><strong>this page was last edited on 17 July 2022, at 11:45 (UTC), by <a href="https://github.com/Angold-4">Angold Wang</a>.</strong></p>
 	</section>
 	</div>
     </div>
@@ -257,8 +268,8 @@ network and a direct ancestor of today's public Internet.</p>
 <div id="disqus_thread"></div>
 <script>
     var disqus_config = function () {
-this.page.url = "https://angold4.org/ds/15441//1Intro.html"
-this.page.identifier = "ds/15441//1Intro.html"
+this.page.url = "https://angold4.org/ds/docs/15441/1Intro.html"
+this.page.identifier = "ds/docs/15441/1Intro.html"
 
     };
     (function() { // DON'T EDIT BELOW THIS LINE

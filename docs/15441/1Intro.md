@@ -182,8 +182,8 @@ The IP layer doesn't give any guarentee!! Since packets can arrive out of order,
 * **It can re-transmit data that is lost.**
 * **It can put packets back together in the right order.**
 
-##### TCP: Reliable In-Order Byte Stream
-##### UDP: No guarantees
+* **TCP**: Reliable In-Order Byte Stream
+* **UDP**: No guarantees
 
 #### Application Layer
 
@@ -223,4 +223,5 @@ Now let's try to understand the word: **"Encapsulation"**:
 * The datagram is then passed to the link layer, which (of course!) will add its own link-layer header information and create a link-layer frame. Thus, we see that at each layer, a packet has two types of fields: **header** fields and a **payload** field. The payload is typically a packet from the layer above.
 
 
+**this page was last edited on 17 July 2022, at 11:45 (UTC), by [Angold Wang](https://github.com/Angold-4).**
 
