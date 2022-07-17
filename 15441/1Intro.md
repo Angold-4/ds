@@ -133,20 +133,94 @@ In my opinion, most of the computer networks are all about **protocols**
 **Protocol layering** has conceptual and structural advantages. As we have seen, layering provides a structured way to discuss system components. Modularity makes it easier to update system components.
 
 ### iii. Five-layer Internet Protocol Stack
+> **“Modularity based on abstraction is the way things get done.”** -- Barbara Liskov
+
 **A layered achitecture allow us to discuss a well-defined, specific part of a large and complex system.**
+
+Here is **The Five-layer Internet Protocol Stack**, which is widely used in practice today. In the following articles, we'll take a **top-down approach**. first covering the application layer and then proceeding downward. **But lets take a bottom-up approach first in order to give a first glance of it.**
 
 ![layer](Sources/layer.png)
 
+
+#### Physical Layer
+“The physical layer defines the means of transmitting raw bits... The bitstream may be grouped into code words or symbols and converted to a physical signal that is transmitted over a transmission medium." [Wikipedia]
+
+**Using any physical medium (electricity, light, radio waves ...) to provides an API (1's and 0's) to the "next up" layer.**
+
+Anyone using the Physical layer can just think about 1's and 0's -- they don't have to worry about how the data is transmitted.
+
+![phy](Sources/phy.png)
+
+#### Data Link Layer
+
+The data link layer allows everyone in the same link (routers...) to talk to everyone else.
+
+The Ethernet protocol, Bluetooth protocol... are all the example of data link-layer protocol.
+
+* **Turns those 1's and 0's into packets.**
+* **Labels senders and receivers.**
+* **Prevents multiple senders from transmitting at the same time.**
+    * Think about wireless: if two transmitters transmit at the same time, they interfere with each other and the signal doesn't get through.
+
+The layer above just see nice, uncorrupted packets, and data link layer will trasmit the packet into the target in the same link.
+
+#### Network Layer
+
+The network layer just stick another header inside of your packets, which will contain global addresses: the **IP Addresses**.
+
+![IP](Sources/IP.png)
+
+* **Switches look at the Layer-2 Header and route according to the Layer-2 Address** (e.g, MAC addresses)
+* **Routers strip off the Layer-2 Header and look at the Layer 3 Header. They route using Layer 3** (i.e. IP) **addresses.**
+
+**The network layer then provides the service of delivering the segment to the transport layer in the destination host.**
+
+#### Transport Layer
+
+The IP layer doesn't give any guarentee!! Since packets can arrive out of order, or they can be lost. **The transport layer wants to makes up for this, which is implemented in code running in end hosts.**
+* **It can establish a connection between two end points.**
+* **It can re-transmit data that is lost.**
+* **It can put packets back together in the right order.**
+
+##### TCP: Reliable In-Order Byte Stream
+##### UDP: No guarantees
+
+#### Application Layer
+
+The application layer is where network applications and their application-layer protocols reside. The Internet’s application layer includes many protocols, such as the **HTTP protocol** (which provides for Web document request and transfer), **SMTP** (which provides for the transfer of e-mail messages), and **FTP** (which provides for the transfer of files between two end systems).
+
+## 3. Encapsulation
+
+If you take a Top-Down view of the Five-Layer Internet Protocol, you may discover (if not, try to understand) an very important concept of **encapsulation**. Just as the airline example we saw before, let's try to understand the Internet through some actions:
+
 ![encapsulation](Sources/encapsulation.png)
 
+1. **The Application sends a chunk of data (bytestream) down to transport layer.**
+2. **Transport layer chops the data into pieces, adds a connection ID & header.**
+3. **Transport layer hands down to IP layer where packet gets an IP address.**
+4. **Packet goes down to link layer where packets gets, e.g,. an Ethernet header.**
+5. **Whenever this Frame pass-by a switch, the link-layer switch will look at the Layer-2 header, and decide where to go next.**
+6. **Whenever this Frame pass-by a router, the router will strip off the Layer-2 header and look at the Layer 3 header to guide the routher to reach the destination.**
+7. **When this Frame arrive at the destination host, the host will strip off layer 2 and 3 headers, then strip off the transport header, potentially put packets back in order.**
+8. **After that, the application finally reads the data that was sent.**
 
+The following figure illustrates the control flow and physical path of Encapsulation in Internet:
 
+![model](Sources/model.png)
 
+As we can see in the figure: **link-layer switches only implement layers 1 and 2**; **routers implement layers 1 through 3.** **And the host implement all five layers.**
 
+This means, for example, that Internet routers are capable of implementing the IP protocol (a layer 3 protocol), while link-layer switches are not.
 
+Now let's try to understand the word: **"Encapsulation"**:
 
+* At the sending host, an application-layer message (**M** in Figure above) is passed to the transport layer. In the simplest case, **the transport layer takes the message and appends additional information (so-called transport-layer header information, Ht in Figure above) that will be used by the receiver-side transport layer.** 
 
+* Then The application-layer message and the transport-layer header information together constitute the transport layer segment. **The transport-layer segment thus encapsulates the application-layer message. The added information might include information allowing the receiver-side transport layer to deliver the message up to the appropriate application, and error-detection bits that allow the receiver to determine whether bits in the message have been changed in route.** 
 
+* The transport layer then passes the segment to the network layer, **which adds network-layer header information (Hn in Figure above) such as source and destination end system addresses**, creating a network-layer **datagram**. 
+
+* The datagram is then passed to the link layer, which (of course!) will add its own link-layer header information and create a link-layer frame. Thus, we see that at each layer, a packet has two types of fields: **header** fields and a **payload** field. The payload is typically a packet from the layer above.
 
 
 
