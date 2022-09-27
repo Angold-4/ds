@@ -10,7 +10,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <link href="../../../images/favicon.png" rel="icon">
-
 <link rel="canonical" href=".">
         <meta name="author" content="Angold Wang" />
 
@@ -26,6 +25,128 @@
 
     <link href="../../../theme/css/pygments/monokai.css" rel="stylesheet">
     <link rel="stylesheet" href="../../../theme/css/style.css" type="text/css"/>
+
+  <style>
+
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+
+    li {
+      font-size: 18px;
+    }
+
+    p {
+      font-size: 18px;
+    }
+
+    a {
+      font-size: 18px;
+    }
+
+    k
+
+    code {
+      font-family: Menlo, Monaco, 'Lucida Console', Consolas, monospace;
+      font-size: 85%;
+      margin: 0;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+    {   }
+
+    @media screen {
+      pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
 
 </head>
 <body>
@@ -64,152 +185,346 @@
     <div class="row">
         <div class="col-lg-12">
 	<section id="content" class="body">
-
-
-
-<h3>Computer Network Notes by Angold Wang</h3>
-<h1>1. Introduction to Computer Network</h1>
-<h2>1. Internet Architecture Via the Lens of History</h2>
-<p><strong>One should architect systems for flexibility – you’ll almost never know what apps make it succeed.</strong></p>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#computer-network-notes-by-angold-wang"
+id="toc-computer-network-notes-by-angold-wang">Computer Network Notes by
+Angold Wang</a></li>
+<li><a href="#introduction-to-computer-network"
+id="toc-introduction-to-computer-network">1. Introduction to Computer
+Network</a>
+<ul>
+<li><a href="#internet-architecture-via-the-lens-of-history"
+id="toc-internet-architecture-via-the-lens-of-history">1. Internet
+Architecture Via the Lens of History</a>
+<ul>
+<li><a href="#i.-the-development-of-packet-switching-1961-1972"
+id="toc-i.-the-development-of-packet-switching-1961-1972">i. The
+Development of Packet Switching: 1961-1972</a></li>
+<li><a href="#ii.-proprietary-networks-and-internetworking-1972-1980"
+id="toc-ii.-proprietary-networks-and-internetworking-1972-1980">ii.
+Proprietary Networks and Internetworking: 1972-1980</a></li>
+<li><a href="#iii.-rapid-growth-1980-1990"
+id="toc-iii.-rapid-growth-1980-1990">iii. Rapid Growth:
+1980-1990</a></li>
+<li><a href="#iv.-the-internet-explosion-the-1990s"
+id="toc-iv.-the-internet-explosion-the-1990s">iv. The Internet
+Explosion: The 1990s</a></li>
+</ul></li>
+<li><a href="#the-internet-model-layering"
+id="toc-the-internet-model-layering">2. The Internet Model &amp;
+Layering</a>
+<ul>
+<li><a href="#i.-intro-an-airline-system"
+id="toc-i.-intro-an-airline-system">i. Intro: An Airline System</a></li>
+<li><a href="#ii.-protocols" id="toc-ii.-protocols">ii.
+Protocols</a></li>
+<li><a href="#iii.-five-layer-internet-protocol-stack"
+id="toc-iii.-five-layer-internet-protocol-stack">iii. Five-layer
+Internet Protocol Stack</a></li>
+</ul></li>
+<li><a href="#encapsulation" id="toc-encapsulation">3.
+Encapsulation</a></li>
+</ul></li>
+</ul>
+</nav>
+<h3 id="computer-network-notes-by-angold-wang">Computer Network Notes by
+Angold Wang</h3>
+<h1 id="introduction-to-computer-network">1. Introduction to Computer
+Network</h1>
+<h2 id="internet-architecture-via-the-lens-of-history">1. Internet
+Architecture Via the Lens of History</h2>
+<p><strong>One should architect systems for flexibility – you’ll almost
+never know what apps make it succeed.</strong></p>
 <p>(Even if it means sacrificing some performance!)</p>
-<h3>i. The Development of Packet Switching: 1961-1972</h3>
-<p><img src="Sources/1957.png" alt="1957"></p>
-<p>In 1957, the Soviet Union launches Sputnik-1, which led to the creation of <strong>ARPA</strong> (Advanced Research Projects Agency).</p>
-<p>At the same time, Three Research groups around the world, each unaware of the others' work, began inventing packet switching as an effcient and robust alternative to circuit switching.</p>
+<h3 id="i.-the-development-of-packet-switching-1961-1972">i. The
+Development of Packet Switching: 1961-1972</h3>
+<figure>
+<img src="Sources/1957.png" alt="1957" />
+<figcaption aria-hidden="true">1957</figcaption>
+</figure>
+<p>In 1957, the Soviet Union launches Sputnik-1, which led to the
+creation of <strong>ARPA</strong> (Advanced Research Projects
+Agency).</p>
+<p>At the same time, Three Research groups around the world, each
+unaware of the others’ work, began inventing packet switching as an
+effcient and robust alternative to circuit switching.</p>
 <ul>
-<li>The first published work on packet-switching techniques was that of <strong><a href="https://en.wikipedia.org/wiki/Leonard_Kleinrock">Leonard Kleinrock</a></strong>, who is a graduate student at MIT.</li>
-<li>In early 1960, <strong><a href="https://en.wikipedia.org/wiki/Donald_Davies">Donald Davies</a></strong> were also developing their ideas on packet switching at the National Physical Laboratory(NPL) in England.</li>
-<li>In 1964, <strong><a href="https://en.wikipedia.org/wiki/Paul_Baran">Paul Baran</a></strong> at RAND Corp had begun invesgating the use of packet switching for secure voice over military networks during the Cold War.</li>
+<li>The first published work on packet-switching techniques was that of
+<strong><a
+href="https://en.wikipedia.org/wiki/Leonard_Kleinrock">Leonard
+Kleinrock</a></strong>, who is a graduate student at MIT.</li>
+<li>In early 1960, <strong><a
+href="https://en.wikipedia.org/wiki/Donald_Davies">Donald
+Davies</a></strong> were also developing their ideas on packet switching
+at the National Physical Laboratory(NPL) in England.</li>
+<li>In 1964, <strong><a
+href="https://en.wikipedia.org/wiki/Paul_Baran">Paul Baran</a></strong>
+at RAND Corp had begun invesgating the use of packet switching for
+secure voice over military networks during the Cold War.</li>
 </ul>
-<p><strong><a href="https://en.wikipedia.org/wiki/Packet_switching">Packet Switching</a></strong> is a method of grouping data into packets that are transmitted over a digital network. (Wikipedia).</p>
-<p>Packets are made of a <strong>header</strong> and a <strong>payload</strong>.</p>
+<p><strong><a
+href="https://en.wikipedia.org/wiki/Packet_switching">Packet
+Switching</a></strong> is a method of grouping data into packets that
+are transmitted over a digital network. (Wikipedia).</p>
+<p>Packets are made of a <strong>header</strong> and a
+<strong>payload</strong>. * Data in the <strong>header</strong> is used
+by networking hardware to direct the packet to its destination. * The
+<strong>payload</strong> is extracted and used by an operating system,
+application software or higher layer protocols.</p>
+<p><strong>The work at MIT, RAND and the NPL laid the foundations for
+today’s Internet.</strong></p>
+<p>Back to the 1960s, after graduate from MIT, Leonard Kleinrock went to
+UCLA and led a research group there. And his colleagues at MIT:
+<strong><a href="https://en.wikipedia.org/wiki/J._C._R._Licklider">J.C.R
+Licklider</a></strong> and <strong><a
+href="https://en.wikipedia.org/wiki/Lawrence_Roberts">Lawrence
+Roberts</a></strong> went on to lead the computer science program at the
+<strong>Advanced Research Projects Agency (ARPA)</strong> in the United
+States. Where roberts published an overall plan for the
+<strong>ARPAnet</strong>, the first packet-switched computer network and
+a direct ancestor of today’s public Internet.</p>
+<p>On Labor Day in 1969, the first packet switch was installed at
+<strong>UCLA</strong> under <strong>Kleinrock</strong>’s supervision,
+after that, there are three additional packet switches installed shortly
+thereafter at the <strong>Stanford Research Institute(SRI)</strong>,
+<strong>UC Santa Barbara</strong>, and <strong>the University of
+Utah</strong>.</p>
+<figure>
+<img src="Sources/kleinrock.png" alt="kleinrock" />
+<figcaption aria-hidden="true">kleinrock</figcaption>
+</figure>
+<p>By 1972, <strong>ARPANET</strong> had grown to approximately 15
+nodes. The firsty host-to-host protocol between <strong>ARPANET</strong>
+end systems, known as the <strong>network-control portocol(NCP)</strong>
+was completed. And the first two cross-country lines (BBN-UCLA and
+MIT-Utah) was estanblished.</p>
+<figure>
+<img src="Sources/ARPANET.png" alt="ARPANET" />
+<figcaption aria-hidden="true">ARPANET</figcaption>
+</figure>
+<h3 id="ii.-proprietary-networks-and-internetworking-1972-1980">ii.
+Proprietary Networks and Internetworking: 1972-1980</h3>
+<p>In 1972, after the successful <strong>ARPANET</strong> demo at
+conference, people in the nodes can use modified ARPANET email program
+to communicate with each other (using <strong>NCP</strong>).</p>
+<p>In the early to mid-1970s, additional stand-alone packet switching
+networks besides ARPAnet came into being: * <strong>ALOHANET</strong>: a
+micro-wave network linking universities on the Hawaiian islands. *
+<strong>DARPA</strong> (Defense Advanced Research Projects Aganecy) ’s
+packet-satellite and packet-ratio networks. * <strong>Telent:</strong> a
+BBN commercial packet-switching network based on ARPAnet technology. *
+<strong>Cyclades:</strong> a french packet-switching network pioneered
+by <strong><a href="https://en.wikipedia.org/wiki/Louis_Pouzin">Louis
+Pouzin</a></strong>. * <strong>CYCLADES</strong> brings many good ideas:
+* <strong>best-effort “datagrams”</strong>; <strong>sliding window
+protocol</strong>; <strong>distance-vector routing</strong>;
+<strong>time-sync</strong>…</p>
+<p>The number of packet-switching networks was growing, as they belong
+to different adminstrations, at that time, only nodes on the same
+network could communicate.</p>
+<p>Pioneering work on <strong>“Internetworking”</strong>, or
+<strong>Network of Networks</strong>, or word <strong>Internet</strong>
+(under the sponsership of <strong>DARPA</strong>), was done by
+<strong><a href="https://en.wikipedia.org/wiki/Vint_Cerf">Vinton
+Cerf</a></strong> and <strong><a
+href="https://en.wikipedia.org/wiki/Bob_Kahn">Robert
+Kahn</a></strong>.</p>
+<p>Their first work is <strong>TCP</strong> (Transimission control
+protocol), the early versions of TCP, however, were quite different from
+today’s TCP. <strong>The early versions of TCP combined a reliable
+in-sequence delivery of data via end-system retransmission</strong>
+(still part of today’s TCP) <strong>with forwarding functions</strong>
+(which today are performed by IP).</p>
+<p>They use <strong>Boxes</strong> (then called
+<strong>gateways</strong>) to connect networks. As the TCP is quite slow
+at that time (reliable), the requirement of fast, unreliable protocol
+becomes significant, which lead to the separation of IP out of TCP
+(reusable, modular) and the development of the <strong>UDP</strong>
+(User Datagram Protocol).</p>
+<p><strong>The three key Internet protocols that we see today – TCP,
+UDP, and IP – were conceptually in place by the end of 1970s.</strong>
+In retrospect: <strong>Packet switching (with TCP/IP) won because it is
+good enough for almost every application</strong> (though optimal for
+nothing!).</p>
+<figure>
+<img src="Sources/gate.png" alt="gate" />
+<figcaption aria-hidden="true">gate</figcaption>
+</figure>
+<h3 id="iii.-rapid-growth-1980-1990">iii. Rapid Growth: 1980-1990</h3>
+<p>By the end of 1970s, approximately two hundred hosts were connected
+to the ARPANET. By the end of 1980s the number of hosts connected to the
+public Internet would reach a hundred thousand. The 1980s would be a
+time of tremendous growth.</p>
+<p>Much of that growth resulted from several distinct efforts to create
+computer networks linking universities together.</p>
 <ul>
-<li>Data in the <strong>header</strong> is used by networking hardware to direct the packet to its destination.</li>
-<li>The <strong>payload</strong> is extracted and used by an operating system, application software or higher layer protocols.</li>
+<li><p><strong>January 1, 1983</strong> saw the official deployment of
+TCP/IP as the new standard host protocol for ARPANET** (replacing the
+NCP), which is a flag day event – <strong>all host were required to
+transfer over to TCP/IP as of that day</strong>.</p></li>
+<li><p><strong>In 1984</strong>, The <strong>DNS</strong> (Domain Name
+SYstem) Introduced, which used to map between a human-readable Internet
+name, and its 32-bit IP address, was also developed.</p></li>
+<li><p><strong>In the late 1980s</strong>, important extensions were
+made to TCP to implement host-based <strong>congestion
+control</strong>.</p></li>
 </ul>
-<p><strong>The work at MIT, RAND and the NPL laid the foundations for today's Internet.</strong></p>
-<p>Back to the 1960s, after graduate from MIT, Leonard Kleinrock went to UCLA and led a research group there. And his colleagues at MIT: <strong><a href="https://en.wikipedia.org/wiki/J._C._R._Licklider">J.C.R Licklider</a></strong> and <strong><a href="https://en.wikipedia.org/wiki/Lawrence_Roberts">Lawrence Roberts</a></strong> went on to lead the computer science program at the <strong>Advanced Research Projects Agency (ARPA)</strong> in the United States. Where roberts published an overall plan for the <strong>ARPAnet</strong>, the first packet-switched computer
-network and a direct ancestor of today's public Internet.</p>
-<p>On Labor Day in 1969, the first packet switch was installed at <strong>UCLA</strong> under <strong>Kleinrock</strong>'s supervision, after that, there are three additional packet switches installed shortly thereafter at the <strong>Stanford Research Institute(SRI)</strong>, <strong>UC Santa Barbara</strong>, and <strong>the University of Utah</strong>.</p>
-<p><img src="Sources/kleinrock.png" alt="kleinrock"></p>
-<p>By 1972, <strong>ARPANET</strong> had grown to approximately 15 nodes. The firsty host-to-host protocol between <strong>ARPANET</strong> end systems, known as the <strong>network-control portocol(NCP)</strong> was completed. And the first two cross-country lines (BBN-UCLA and MIT-Utah) was estanblished.</p>
-<p><img src="Sources/ARPANET.png" alt="ARPANET"></p>
-<h3>ii. Proprietary Networks and Internetworking: 1972-1980</h3>
-<p>In 1972, after the successful <strong>ARPANET</strong> demo at conference, people in the nodes can use modified ARPANET email program to communicate with each other (using <strong>NCP</strong>).</p>
-<p>In the early to mid-1970s, additional stand-alone packet switching networks besides ARPAnet came into being:</p>
+<figure>
+<img src="Sources/congestion.png" alt="congestion" />
+<figcaption aria-hidden="true">congestion</figcaption>
+</figure>
+<h3 id="iv.-the-internet-explosion-the-1990s">iv. The Internet
+Explosion: The 1990s</h3>
+<p>The main event of the 1990s was to be the emergence of the
+<strong>World Wide Web</strong> application, which <strong>brought the
+Internet into the homes and businesses of millions of people
+worldwide</strong>. The Web served as a platform for enabling and
+deploying hundreds of new <strong>applications</strong> that we take for
+granted today, including <strong>search</strong> (e.g., <em>Google</em>
+and <em>Bing</em>) <strong>Internet commerce</strong> (e.g.,
+<em>Amazon</em> and <em>eBay</em>) and <strong>social networks</strong>
+(e.g., <em>Facebook</em>).</p>
+<p>The <strong>WWW</strong> was invented by <strong><a
+href="https://en.wikipedia.org/wiki/Tim_Berners-Lee">Tim
+Berners-Lee</a></strong> between 1989 and 1991. Berners-Lee and his
+associates developed initial versions of <strong>HTML</strong>,
+<strong>HTTP</strong>, a <strong>Web server</strong> and a
+<strong>Browser</strong> – the four key components of the Web.</p>
+<p>The second half of the 1990s was a period of tremendous growth and
+innovation for the Internet, with major corporations and thousands of
+startups creating Internet products and services. By the end of the
+millennium the Internet was supporting hundreds of popular applications,
+including four killer applications:</p>
 <ul>
-<li><strong>ALOHANET</strong>: a micro-wave network linking universities on the Hawaiian islands.</li>
-<li><strong>DARPA</strong> (Defense Advanced Research Projects Aganecy) 's packet-satellite and packet-ratio networks.</li>
-<li><strong>Telent:</strong> a BBN commercial packet-switching network based on ARPAnet technology.</li>
-<li><strong>Cyclades:</strong> a french packet-switching network pioneered by <strong><a href="https://en.wikipedia.org/wiki/Louis_Pouzin">Louis Pouzin</a></strong>.
-<ul>
-<li><strong>CYCLADES</strong> brings many good ideas:</li>
-<li><strong>best-effort &quot;datagrams&quot;</strong>; <strong>sliding window protocol</strong>; <strong>distance-vector routing</strong>; <strong>time-sync</strong>...</li>
-</ul>
-</li>
-</ul>
-<p>The number of packet-switching networks was growing, as they belong to different adminstrations, at that time, only nodes on the same network could communicate.</p>
-<p>Pioneering work on <strong>&quot;Internetworking&quot;</strong>, or <strong>Network of Networks</strong>, or word <strong>Internet</strong> (under the sponsership of <strong>DARPA</strong>), was done by <strong><a href="https://en.wikipedia.org/wiki/Vint_Cerf">Vinton Cerf</a></strong> and <strong><a href="https://en.wikipedia.org/wiki/Bob_Kahn">Robert Kahn</a></strong>.</p>
-<p>Their first work is <strong>TCP</strong> (Transimission control protocol), the early versions of TCP, however, were quite different from today's TCP. <strong>The early versions of TCP combined a reliable in-sequence delivery of data via end-system retransmission</strong> (still part of today's TCP) <strong>with forwarding functions</strong> (which today are performed by IP).</p>
-<p>They use <strong>Boxes</strong> (then called <strong>gateways</strong>) to connect networks. As the TCP is quite slow at that time (reliable), the requirement of fast, unreliable protocol becomes significant, which lead to the separation of IP out of TCP (reusable, modular) and the development of the <strong>UDP</strong> (User Datagram Protocol).</p>
-<p><strong>The three key Internet protocols that we see today -- TCP, UDP, and IP -- were conceptually in place by the end of 1970s.</strong> In retrospect: <strong>Packet switching (with TCP/IP) won because it is good enough for almost every application</strong> (though optimal for nothing!).</p>
-<p><img src="Sources/gate.png" alt="gate"></p>
-<h3>iii. Rapid Growth: 1980-1990</h3>
-<p>By the end of 1970s, approximately two hundred hosts were connected to the ARPANET. By the end of 1980s the number of hosts connected to the public Internet would reach a hundred thousand. The 1980s would be a time of tremendous growth.</p>
-<p>Much of that growth resulted from several distinct efforts to create computer networks linking universities together.</p>
-<ul>
-<li>
-<p><strong>January 1, 1983</strong> saw the official deployment of TCP/IP as the new standard host protocol for ARPANET** (replacing the NCP), which is a flag day event -- <strong>all host were required to transfer over to TCP/IP as of that day</strong>.</p>
-</li>
-<li>
-<p><strong>In 1984</strong>, The <strong>DNS</strong> (Domain Name SYstem) Introduced, which used to map between a human-readable Internet name, and its 32-bit IP address, was also developed.</p>
-</li>
-<li>
-<p><strong>In the late 1980s</strong>, important extensions were made to TCP to implement host-based <strong>congestion control</strong>.</p>
-</li>
-</ul>
-<p><img src="Sources/congestion.png" alt="congestion"></p>
-<h3>iv. The Internet Explosion: The 1990s</h3>
-<p>The main event of the 1990s was to be the emergence of the <strong>World Wide Web</strong> application, which <strong>brought the Internet into the homes and businesses of millions of people worldwide</strong>. The Web served as a platform for enabling and deploying hundreds of new <strong>applications</strong> that we take for granted today, including <strong>search</strong> (e.g., <em>Google</em> and <em>Bing</em>) <strong>Internet commerce</strong> (e.g., <em>Amazon</em> and <em>eBay</em>) and <strong>social networks</strong> (e.g., <em>Facebook</em>).</p>
-<p>The <strong>WWW</strong> was invented by <strong><a href="https://en.wikipedia.org/wiki/Tim_Berners-Lee">Tim Berners-Lee</a></strong> between 1989 and 1991. Berners-Lee and his associates developed initial versions of <strong>HTML</strong>, <strong>HTTP</strong>, a <strong>Web server</strong> and a <strong>Browser</strong> -- the four key components of the Web.</p>
-<p>The second half of the 1990s was a period of tremendous growth and innovation for the Internet, with major corporations and thousands of startups creating Internet products and services. By the end of the millennium the Internet was supporting hundreds of popular applications, including four killer applications:</p>
-<ul>
-<li><strong>E-mail, including attachments and Web-accessible e-mail</strong></li>
-<li><strong>The Web, including Web browsing and Internet commerce</strong></li>
+<li><strong>E-mail, including attachments and Web-accessible
+e-mail</strong></li>
+<li><strong>The Web, including Web browsing and Internet
+commerce</strong></li>
 <li><strong>Instant messaging, with contact lists</strong></li>
-<li><strong>Peer-to-peer file sharing of MP3s, pioneered by Napster</strong></li>
+<li><strong>Peer-to-peer file sharing of MP3s, pioneered by
+Napster</strong></li>
 </ul>
-<p>The period from 1995 to 2001 was a roller-coaster ride for the Internet in the financial markets. Before they were even profitable, hundreds of Internet startups made initial public offerings and started to be traded in a stock market. Many companies were valued in the billions of dollars without having any significant revenue streams. The Internet stocks collapsed in 2000–2001, and many startups shut down. Nevertheless, a number of companies emerged as big winners in the Internet space, including <em>Microsoft</em>, <em>Cisco</em>, <em>Yahoo</em>, <em>e-Bay</em>, <em>Google</em>, and <em>Amazon</em>.</p>
-<p>As the commercialization of Internet arrive. <strong>ARPANET</strong>, the progenitor of the Internet, ceased to exist, with Internet backbone traffic being carried by commercial Internet Service Providers.</p>
-<h2>2. The Internet Model &amp; Layering</h2>
-<h3>i. Intro: An Airline System</h3>
-<p>As you might think, it is apparent that the Internet is an extremely complicated system, is there any hope of organizing a network architecture, or at least our discussion of network architecture?</p>
-<p>Fortunately, the answer to both questions is yes, and actually, we deal with complex systems all the time in our everyday life. For example, the airline system, how would you find the structure of to describe the series of actions you take, and all the stuff in this system such as ticketing agents, baggage checkers, gate personnel,. etc.</p>
-<p>Usually, people would use multiple sequential <strong>actions</strong> to describe this system.</p>
+<p>The period from 1995 to 2001 was a roller-coaster ride for the
+Internet in the financial markets. Before they were even profitable,
+hundreds of Internet startups made initial public offerings and started
+to be traded in a stock market. Many companies were valued in the
+billions of dollars without having any significant revenue streams. The
+Internet stocks collapsed in 2000–2001, and many startups shut down.
+Nevertheless, a number of companies emerged as big winners in the
+Internet space, including <em>Microsoft</em>, <em>Cisco</em>,
+<em>Yahoo</em>, <em>e-Bay</em>, <em>Google</em>, and
+<em>Amazon</em>.</p>
+<p>As the commercialization of Internet arrive.
+<strong>ARPANET</strong>, the progenitor of the Internet, ceased to
+exist, with Internet backbone traffic being carried by commercial
+Internet Service Providers.</p>
+<h2 id="the-internet-model-layering">2. The Internet Model &amp;
+Layering</h2>
+<h3 id="i.-intro-an-airline-system">i. Intro: An Airline System</h3>
+<p>As you might think, it is apparent that the Internet is an extremely
+complicated system, is there any hope of organizing a network
+architecture, or at least our discussion of network architecture?</p>
+<p>Fortunately, the answer to both questions is yes, and actually, we
+deal with complex systems all the time in our everyday life. For
+example, the airline system, how would you find the structure of to
+describe the series of actions you take, and all the stuff in this
+system such as ticketing agents, baggage checkers, gate personnel,.
+etc.</p>
+<p>Usually, people would use multiple sequential
+<strong>actions</strong> to describe this system.</p>
 <ul>
-<li>Purchase ticket -&gt; Check baggage -&gt; Load gates -&gt; Takeoff -&gt; Airplane routine</li>
-<li>Airplane routine -&gt; Landing -&gt; Unload gates -&gt; Claim baggage -&gt; Complain ticket</li>
+<li>Purchase ticket -&gt; Check baggage -&gt; Load gates -&gt; Takeoff
+-&gt; Airplane routine</li>
+<li>Airplane routine -&gt; Landing -&gt; Unload gates -&gt; Claim
+baggage -&gt; Complain ticket</li>
 </ul>
-<p>Maybe most of them do not aware of it: when they describe these actions, they divide the airline functionality into layers.</p>
-<p><img src="Sources/airplane.png" alt="airplane"></p>
-<p>Each layer provides its <strong>service</strong> by:</p>
-<ol>
-<li><strong>Performing certain actions within that layer.</strong></li>
-</ol>
-<ul>
-<li>At the gate layer, loading and unloading people from an airplane.</li>
-</ul>
-<ol start="2">
-<li><strong>Using the services of the layer directly below it.</strong></li>
-</ol>
-<ul>
-<li>The gate (unload) requires the airplane takeoff and routing to the destination.</li>
-</ul>
-<h3>ii. Protocols</h3>
-<p>Let's turn our attention to network <strong>protocols</strong>, for example, the services provided by layer n may include reliable delivery of messages from one edge of the network to the other, and this might be implemented by using an unreliable edge-to-edge message delivery service of layer n-1, and adding layer n functionality to detect and retransmit lost messages.</p>
-<p>In my opinion, most of the computer networks are all about <strong>protocols</strong></p>
-<ul>
-<li>Network designers organize <strong>protocols</strong></li>
-<li>Network hardware and software implement the <strong>protocols</strong></li>
-<li>Each <strong>protocol</strong> belongs to one of the layers.</li>
-</ul>
-<p><strong>Protocol layering</strong> has conceptual and structural advantages. As we have seen, layering provides a structured way to discuss system components. Modularity makes it easier to update system components.</p>
-<h3>iii. Five-layer Internet Protocol Stack</h3>
+<p>Maybe most of them do not aware of it: when they describe these
+actions, they divide the airline functionality into layers.</p>
+<figure>
+<img src="Sources/airplane.png" alt="airplane" />
+<figcaption aria-hidden="true">airplane</figcaption>
+</figure>
+<p>Each layer provides its <strong>service</strong> by: 1.
+<strong>Performing certain actions within that layer.</strong> * At the
+gate layer, loading and unloading people from an airplane. 2.
+<strong>Using the services of the layer directly below it.</strong> *
+The gate (unload) requires the airplane takeoff and routing to the
+destination.</p>
+<h3 id="ii.-protocols">ii. Protocols</h3>
+<p>Let’s turn our attention to network <strong>protocols</strong>, for
+example, the services provided by layer n may include reliable delivery
+of messages from one edge of the network to the other, and this might be
+implemented by using an unreliable edge-to-edge message delivery service
+of layer n-1, and adding layer n functionality to detect and retransmit
+lost messages.</p>
+<p>In my opinion, most of the computer networks are all about
+<strong>protocols</strong> * Network designers organize
+<strong>protocols</strong> * Network hardware and software implement the
+<strong>protocols</strong> * Each <strong>protocol</strong> belongs to
+one of the layers.</p>
+<p><strong>Protocol layering</strong> has conceptual and structural
+advantages. As we have seen, layering provides a structured way to
+discuss system components. Modularity makes it easier to update system
+components.</p>
+<h3 id="iii.-five-layer-internet-protocol-stack">iii. Five-layer
+Internet Protocol Stack</h3>
 <blockquote>
-<p><strong>“Modularity based on abstraction is the way things get done.”</strong> -- Barbara Liskov</p>
+<p><strong>“Modularity based on abstraction is the way things get
+done.”</strong> – Barbara Liskov</p>
 </blockquote>
-<p><strong>A layered achitecture allow us to discuss a well-defined, specific part of a large and complex system.</strong></p>
-<p>Here is <strong>The Five-layer Internet Protocol Stack</strong>, which is widely used in practice today. In the following articles, we'll take a <strong>top-down approach</strong>. first covering the application layer and then proceeding downward. <strong>But lets take a bottom-up approach first in order to give a first glance of it.</strong></p>
-<p><img src="Sources/layer.png" alt="layer"></p>
-<h4>Physical Layer</h4>
-<p>“The physical layer defines the means of transmitting raw bits... The bitstream may be grouped into code words or symbols and converted to a physical signal that is transmitted over a transmission medium.&quot; [Wikipedia]</p>
-<p><strong>Using any physical medium (electricity, light, radio waves ...) to provides an API (1's and 0's) to the &quot;next up&quot; layer.</strong></p>
-<p>Anyone using the Physical layer can just think about 1's and 0's -- they don't have to worry about how the data is transmitted.</p>
-<p><img src="Sources/phy.png" alt="phy"></p>
-<h4>Data Link Layer</h4>
-<p>The data link layer allows everyone in the same link (routers...) to talk to everyone else.</p>
-<p>The Ethernet protocol, Bluetooth protocol... are all the example of data link-layer protocol.</p>
+<p><strong>A layered achitecture allow us to discuss a well-defined,
+specific part of a large and complex system.</strong></p>
+<p>Here is <strong>The Five-layer Internet Protocol Stack</strong>,
+which is widely used in practice today. In the following articles, we’ll
+take a <strong>top-down approach</strong>. first covering the
+application layer and then proceeding downward. <strong>But lets take a
+bottom-up approach first in order to give a first glance of
+it.</strong></p>
+<figure>
+<img src="Sources/layer.png" alt="layer" />
+<figcaption aria-hidden="true">layer</figcaption>
+</figure>
+<h4 id="physical-layer">Physical Layer</h4>
+<p>“The physical layer defines the means of transmitting raw bits… The
+bitstream may be grouped into code words or symbols and converted to a
+physical signal that is transmitted over a transmission medium.”
+[Wikipedia]</p>
+<p><strong>Using any physical medium (electricity, light, radio waves …)
+to provides an API (1’s and 0’s) to the “next up” layer.</strong></p>
+<p>Anyone using the Physical layer can just think about 1’s and 0’s –
+they don’t have to worry about how the data is transmitted.</p>
+<figure>
+<img src="Sources/phy.png" alt="phy" />
+<figcaption aria-hidden="true">phy</figcaption>
+</figure>
+<h4 id="data-link-layer">Data Link Layer</h4>
+<p>The data link layer allows everyone in the same link (routers…) to
+talk to everyone else.</p>
+<p>The Ethernet protocol, Bluetooth protocol… are all the example of
+data link-layer protocol.</p>
 <ul>
-<li><strong>Turns those 1's and 0's into packets.</strong></li>
+<li><strong>Turns those 1’s and 0’s into packets.</strong></li>
 <li><strong>Labels senders and receivers.</strong></li>
-<li><strong>Prevents multiple senders from transmitting at the same time.</strong>
+<li><strong>Prevents multiple senders from transmitting at the same
+time.</strong>
 <ul>
-<li>Think about wireless: if two transmitters transmit at the same time, they interfere with each other and the signal doesn't get through.</li>
+<li>Think about wireless: if two transmitters transmit at the same time,
+they interfere with each other and the signal doesn’t get through.</li>
+</ul></li>
 </ul>
-</li>
-</ul>
-<p>The layer above just see nice, uncorrupted packets, and data link layer will trasmit the packet into the target in the same link.</p>
-<h4>Network Layer</h4>
-<p>The network layer just stick another header inside of your packets, which will contain global addresses: the <strong>IP Addresses</strong>.</p>
-<p><img src="Sources/IP.png" alt="IP"></p>
+<p>The layer above just see nice, uncorrupted packets, and data link
+layer will trasmit the packet into the target in the same link.</p>
+<h4 id="network-layer">Network Layer</h4>
+<p>The network layer just stick another header inside of your packets,
+which will contain global addresses: the <strong>IP
+Addresses</strong>.</p>
+<figure>
+<img src="Sources/IP.png" alt="IP" />
+<figcaption aria-hidden="true">IP</figcaption>
+</figure>
 <ul>
-<li><strong>Switches look at the Layer-2 Header and route according to the Layer-2 Address</strong> (e.g, MAC addresses)</li>
-<li><strong>Routers strip off the Layer-2 Header and look at the Layer 3 Header. They route using Layer 3</strong> (i.e. IP) <strong>addresses.</strong></li>
-</ul>
-<p><strong>The network layer then provides the service of delivering the segment to the transport layer in the destination host.</strong></p>
-<h4>Transport Layer</h4>
-<p>The IP layer doesn't give any guarentee!! Since packets can arrive out of order, or they can be lost. <strong>The transport layer wants to makes up for this, which is implemented in code running in end hosts.</strong></p>
-<ul>
+<<<<<<< HEAD
 <li>
 <p><strong>It can establish a connection between two end points.</strong></p>
 </li>
@@ -240,25 +555,104 @@ network and a direct ancestor of today's public Internet.</p>
 <li><strong>Whenever this Frame pass-by a router, the router will strip off the Layer-2 header and look at the Layer 3 header to guide the routher to reach the destination.</strong></li>
 <li><strong>When this Frame arrive at the destination host, the host will strip off layer 2 and 3 headers, then strip off the transport header, potentially put packets back in order.</strong></li>
 <li><strong>After that, the application finally reads the data that was sent.</strong></li>
+=======
+<li><strong>Switches look at the Layer-2 Header and route according to
+the Layer-2 Address</strong> (e.g, MAC addresses)</li>
+<li><strong>Routers strip off the Layer-2 Header and look at the Layer 3
+Header. They route using Layer 3</strong> (i.e. IP)
+<strong>addresses.</strong></li>
+</ul>
+<p><strong>The network layer then provides the service of delivering the
+segment to the transport layer in the destination host.</strong></p>
+<h4 id="transport-layer">Transport Layer</h4>
+<p>The IP layer doesn’t give any guarentee!! Since packets can arrive
+out of order, or they can be lost. <strong>The transport layer wants to
+makes up for this, which is implemented in code running in end
+hosts.</strong> * <strong>It can establish a connection between two end
+points.</strong> * <strong>It can re-transmit data that is
+lost.</strong> * <strong>It can put packets back together in the right
+order.</strong></p>
+<h5 id="tcp-reliable-in-order-byte-stream">TCP: Reliable In-Order Byte
+Stream</h5>
+<h5 id="udp-no-guarantees">UDP: No guarantees</h5>
+<h4 id="application-layer">Application Layer</h4>
+<p>The application layer is where network applications and their
+application-layer protocols reside. The Internet’s application layer
+includes many protocols, such as the <strong>HTTP protocol</strong>
+(which provides for Web document request and transfer),
+<strong>SMTP</strong> (which provides for the transfer of e-mail
+messages), and <strong>FTP</strong> (which provides for the transfer of
+files between two end systems).</p>
+<h2 id="encapsulation">3. Encapsulation</h2>
+<p>If you take a Top-Down view of the Five-Layer Internet Protocol, you
+may discover (if not, try to understand) an very important concept of
+<strong>encapsulation</strong>. Just as the airline example we saw
+before, let’s try to understand the Internet through some actions:</p>
+<figure>
+<img src="Sources/encapsulation.png" alt="encapsulation" />
+<figcaption aria-hidden="true">encapsulation</figcaption>
+</figure>
+<ol type="1">
+<li><strong>The Application sends a chunk of data (bytestream) down to
+transport layer.</strong></li>
+<li><strong>Transport layer chops the data into pieces, adds a
+connection ID &amp; header.</strong></li>
+<li><strong>Transport layer hands down to IP layer where packet gets an
+IP address.</strong></li>
+<li><strong>Packet goes down to link layer where packets gets, e.g,. an
+Ethernet header.</strong></li>
+<li><strong>Whenever this Frame pass-by a switch, the link-layer switch
+will look at the Layer-2 header, and decide where to go
+next.</strong></li>
+<li><strong>Whenever this Frame pass-by a router, the router will strip
+off the Layer-2 header and look at the Layer 3 header to guide the
+routher to reach the destination.</strong></li>
+<li><strong>When this Frame arrive at the destination host, the host
+will strip off layer 2 and 3 headers, then strip off the transport
+header, potentially put packets back in order.</strong></li>
+<li><strong>After that, the application finally reads the data that was
+sent.</strong></li>
+>>>>>>> fd2b17cba574bf89c3f3b6ea9d8a0d3d3d558476
 </ol>
-<p>The following figure illustrates the control flow and physical path of Encapsulation in Internet:</p>
-<p><img src="Sources/model.png" alt="model"></p>
-<p>As we can see in the figure: <strong>link-layer switches only implement layers 1 and 2</strong>; <strong>routers implement layers 1 through 3.</strong> <strong>And the host implement all five layers.</strong></p>
-<p>This means, for example, that Internet routers are capable of implementing the IP protocol (a layer 3 protocol), while link-layer switches are not.</p>
-<p>Now let's try to understand the word: <strong>&quot;Encapsulation&quot;</strong>:</p>
+<p>The following figure illustrates the control flow and physical path
+of Encapsulation in Internet:</p>
+<figure>
+<img src="Sources/model.png" alt="model" />
+<figcaption aria-hidden="true">model</figcaption>
+</figure>
+<p>As we can see in the figure: <strong>link-layer switches only
+implement layers 1 and 2</strong>; <strong>routers implement layers 1
+through 3.</strong> <strong>And the host implement all five
+layers.</strong></p>
+<p>This means, for example, that Internet routers are capable of
+implementing the IP protocol (a layer 3 protocol), while link-layer
+switches are not.</p>
+<p>Now let’s try to understand the word:
+<strong>“Encapsulation”</strong>:</p>
 <ul>
-<li>
-<p>At the sending host, an application-layer message (<strong>M</strong> in Figure above) is passed to the transport layer. In the simplest case, <strong>the transport layer takes the message and appends additional information (so-called transport-layer header information, Ht in Figure above) that will be used by the receiver-side transport layer.</strong></p>
-</li>
-<li>
-<p>Then The application-layer message and the transport-layer header information together constitute the transport layer segment. <strong>The transport-layer segment thus encapsulates the application-layer message. The added information might include information allowing the receiver-side transport layer to deliver the message up to the appropriate application, and error-detection bits that allow the receiver to determine whether bits in the message have been changed in route.</strong></p>
-</li>
-<li>
-<p>The transport layer then passes the segment to the network layer, <strong>which adds network-layer header information (Hn in Figure above) such as source and destination end system addresses</strong>, creating a network-layer <strong>datagram</strong>.</p>
-</li>
-<li>
-<p>The datagram is then passed to the link layer, which (of course!) will add its own link-layer header information and create a link-layer frame. Thus, we see that at each layer, a packet has two types of fields: <strong>header</strong> fields and a <strong>payload</strong> field. The payload is typically a packet from the layer above.</p>
-</li>
+<li><p>At the sending host, an application-layer message
+(<strong>M</strong> in Figure above) is passed to the transport layer.
+In the simplest case, <strong>the transport layer takes the message and
+appends additional information (so-called transport-layer header
+information, Ht in Figure above) that will be used by the receiver-side
+transport layer.</strong></p></li>
+<li><p>Then The application-layer message and the transport-layer header
+information together constitute the transport layer segment. <strong>The
+transport-layer segment thus encapsulates the application-layer message.
+The added information might include information allowing the
+receiver-side transport layer to deliver the message up to the
+appropriate application, and error-detection bits that allow the
+receiver to determine whether bits in the message have been changed in
+route.</strong></p></li>
+<li><p>The transport layer then passes the segment to the network layer,
+<strong>which adds network-layer header information (Hn in Figure above)
+such as source and destination end system addresses</strong>, creating a
+network-layer <strong>datagram</strong>.</p></li>
+<li><p>The datagram is then passed to the link layer, which (of course!)
+will add its own link-layer header information and create a link-layer
+frame. Thus, we see that at each layer, a packet has two types of
+fields: <strong>header</strong> fields and a <strong>payload</strong>
+field. The payload is typically a packet from the layer above.</p></li>
 </ul>
 <p><strong>this page was last edited on 17 July 2022, at 11:45 (UTC), by <a href="https://github.com/Angold-4">Angold Wang</a>.</strong></p>
 	</section>
@@ -300,6 +694,10 @@ this.page.identifier = "ds/docs/15441/1Intro.html"
    </div>
 </footer>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
 <script src="../../../theme/js/bootstrap.min.js"></script>
 
 <!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->

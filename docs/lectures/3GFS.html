@@ -10,7 +10,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <link href="../../../images/favicon.png" rel="icon">
-
 <link rel="canonical" href=".">
         <meta name="author" content="Angold Wang" />
 
@@ -26,6 +25,128 @@
 
     <link href="../../../theme/css/pygments/monokai.css" rel="stylesheet">
     <link rel="stylesheet" href="../../../theme/css/style.css" type="text/css"/>
+
+  <style>
+
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+
+    li {
+      font-size: 18px;
+    }
+
+    p {
+      font-size: 18px;
+    }
+
+    a {
+      font-size: 18px;
+    }
+
+    k
+
+    code {
+      font-family: Menlo, Monaco, 'Lucida Console', Consolas, monospace;
+      font-size: 85%;
+      margin: 0;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+    {   }
+
+    @media screen {
+      pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
 
 </head>
 <body>
@@ -64,57 +185,74 @@
     <div class="row">
         <div class="col-lg-12">
 	<section id="content" class="body">
-
-
-
-<h1>3. Google File Systems</h1>
-<h5>02/22/2022 By Angold Wang</h5>
-<h2>1. Distributed Storage</h2>
-<h3>i. Why do we need distributed storage?</h3>
-<p><img src="Sources/sorta.png" alt="sorta"></p>
+<nav id="TOC" role="doc-toc">
 <ul>
-<li><strong>We want to store more data</strong>
+<li><a href="#google-file-systems" id="toc-google-file-systems">3.
+Google File Systems</a>
 <ul>
-<li>store data across multiple servers</li>
-</ul>
-</li>
-<li><strong>We want high performance (throughput)</strong>
+<li><a href="#distributed-storage" id="toc-distributed-storage">1.
+Distributed Storage</a>
 <ul>
-<li>split the request data into pieces and read them concurrently from different servers.</li>
-<li><strong>the mapreduce example</strong>:
+<li><a href="#i.-why-do-we-need-distributed-storage"
+id="toc-i.-why-do-we-need-distributed-storage">i. Why do we need
+distributed storage?</a></li>
+<li><a href="#ii.-conumndrum-of-high-performance"
+id="toc-ii.-conumndrum-of-high-performance">ii. Conumndrum of
+High-Performance</a></li>
+<li><a href="#iii.-consistency" id="toc-iii.-consistency">iii.
+Consistency</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+<h1 id="google-file-systems">3. Google File Systems</h1>
+<h5 id="by-angold-wang">02/22/2022 By Angold Wang</h5>
+<h2 id="distributed-storage">1. Distributed Storage</h2>
+<h3 id="i.-why-do-we-need-distributed-storage">i. Why do we need
+distributed storage?</h3>
+<p><img src="Sources/sorta.png" alt="sorta" /> * <strong>We want to
+store more data</strong> * store data across multiple servers *
+<strong>We want high performance (throughput)</strong> * split the
+request data into pieces and read them concurrently from different
+servers. * <strong>the mapreduce example</strong>: * The throughput of
+single SSD is <strong><code>10MB/s</code></strong>. * If we split the
+big data set into <strong><code>1000</code></strong> servers. * We can
+achieve <strong><code>10000MB/s</code></strong> throughput by reading
+from 1000 disks concurrently.</p>
+<h3 id="ii.-conumndrum-of-high-performance">ii. Conumndrum of
+High-Performance</h3>
 <ul>
-<li>The throughput of single SSD is <strong><code>10MB/s</code></strong>.</li>
-<li>If we split the big data set into <strong><code>1000</code></strong> servers.</li>
-<li>We can achieve <strong><code>10000MB/s</code></strong> throughput by reading from 1000 disks concurrently.</li>
+<li><strong>we want high performance</strong> =&gt; <strong>shared data
+over many servers</strong></li>
+<li><strong>many servers</strong> =&gt; <strong>constant faults (some
+machines are gonna crash)</strong></li>
+<li><strong>fault tolerance</strong> =&gt;
+<strong>replication</strong></li>
+<li><strong>replication</strong> =&gt; <strong>potential
+inconsistencies</strong></li>
+<li><strong>better consistency</strong> =&gt; <strong>low
+performance</strong></li>
 </ul>
-</li>
-</ul>
-</li>
-</ul>
-<h3>ii. Conumndrum of High-Performance</h3>
-<ul>
-<li><strong>we want high performance</strong> =&gt; <strong>shared data over many servers</strong></li>
-<li><strong>many servers</strong> =&gt; <strong>constant faults (some machines are gonna crash)</strong></li>
-<li><strong>fault tolerance</strong> =&gt; <strong>replication</strong></li>
-<li><strong>replication</strong> =&gt; <strong>potential inconsistencies</strong></li>
-<li><strong>better consistency</strong> =&gt; <strong>low performance</strong></li>
-</ul>
-<h3>iii. Consistency</h3>
-<h4>Strong Consistency</h4>
-<p><img src="Sources/strongcon.png" alt="strongcon"></p>
-<ul>
-<li><strong>Suppose Client1 and Client2 write concurrently.</strong></li>
-<li><strong>After the writes have completed, Client3 and Client4 read. What can they see?</strong></li>
-</ul>
-<p><strong>Answer: either 1 or 2, but both have to see the same value. This is a &quot;strong&quot; concurrency model.</strong></p>
-<h4>In a distributed system ...</h4>
-<p><strong>Replication for fault-tolerance makes strong consistency tricky.</strong></p>
-<p><img src="Sources/replicacon.png" alt="replicacon"></p>
-<ul>
-<li><strong>Client1 and Client2 send writes to both, in parallel</strong></li>
-</ul>
-<p><strong>This time, both Client3 and Client4 will also see either 1 or 2, but no guarrentee that they will see the same value. That is not a strong consistency.</strong></p>
-<p><strong>Better consistency ususlly requires communication to ensure the replicas stay in sync, which can be slow. And there are lots of tradeoffs possible between performance and consistency.</strong></p>
+<h3 id="iii.-consistency">iii. Consistency</h3>
+<h4 id="strong-consistency">Strong Consistency</h4>
+<p><img src="Sources/strongcon.png" alt="strongcon" /> * <strong>Suppose
+Client1 and Client2 write concurrently.</strong> * <strong>After the
+writes have completed, Client3 and Client4 read. What can they
+see?</strong></p>
+<p><strong>Answer: either 1 or 2, but both have to see the same value.
+This is a “strong” concurrency model.</strong></p>
+<h4 id="in-a-distributed-system">In a distributed system …</h4>
+<p><strong>Replication for fault-tolerance makes strong consistency
+tricky.</strong></p>
+<p><img src="Sources/replicacon.png" alt="replicacon" /> *
+<strong>Client1 and Client2 send writes to both, in
+parallel</strong></p>
+<p><strong>This time, both Client3 and Client4 will also see either 1 or
+2, but no guarrentee that they will see the same value. That is not a
+strong consistency.</strong></p>
+<p><strong>Better consistency ususlly requires communication to ensure
+the replicas stay in sync, which can be slow. And there are lots of
+tradeoffs possible between performance and consistency.</strong></p>
 	</section>
 	</div>
     </div>
@@ -154,6 +292,10 @@ this.page.identifier = "ds/docs/lectures/3GFS.html"
    </div>
 </footer>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
 <script src="../../../theme/js/bootstrap.min.js"></script>
 
 <!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->

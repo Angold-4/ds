@@ -10,7 +10,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <link href="../../../images/favicon.png" rel="icon">
-
 <link rel="canonical" href=".">
         <meta name="author" content="Angold Wang" />
 
@@ -26,6 +25,128 @@
 
     <link href="../../../theme/css/pygments/monokai.css" rel="stylesheet">
     <link rel="stylesheet" href="../../../theme/css/style.css" type="text/css"/>
+
+  <style>
+
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+
+    li {
+      font-size: 18px;
+    }
+
+    p {
+      font-size: 18px;
+    }
+
+    a {
+      font-size: 18px;
+    }
+
+    k
+
+    code {
+      font-family: Menlo, Monaco, 'Lucida Console', Consolas, monospace;
+      font-size: 85%;
+      margin: 0;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+    {   }
+
+    @media screen {
+      pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
 
 </head>
 <body>
@@ -64,40 +185,69 @@
     <div class="row">
         <div class="col-lg-12">
 	<section id="content" class="body">
-
-
-
-<h1>1. Introduction</h1>
-<h5>02/07/2022 By Angold Wang</h5>
-<h2>1. Distributed System</h2>
-<h3>What a Distributed System is?</h3>
-<p><strong>A set of cooperating computers that are communicating with each other over network to get some coherent task done.</strong></p>
-<h4>Examples</h4>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#introduction" id="toc-introduction">1. Introduction</a>
+<ul>
+<li><a href="#distributed-system" id="toc-distributed-system">1.
+Distributed System</a>
+<ul>
+<li><a href="#what-a-distributed-system-is"
+id="toc-what-a-distributed-system-is">What a Distributed System
+is?</a></li>
+<li><a href="#why-people-need-a-distributed-system"
+id="toc-why-people-need-a-distributed-system">Why People Need a
+Distributed System?</a></li>
+<li><a href="#to-build-such-abstractions"
+id="toc-to-build-such-abstractions">To Build such Abstractions…</a></li>
+</ul></li>
+<li><a href="#mapreduce" id="toc-mapreduce">2. MapReduce</a>
+<ul>
+<li><a href="#simple-example-word-count"
+id="toc-simple-example-word-count">Simple Example: Word Count</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+<h1 id="introduction">1. Introduction</h1>
+<h5 id="by-angold-wang">02/07/2022 By Angold Wang</h5>
+<h2 id="distributed-system">1. Distributed System</h2>
+<h3 id="what-a-distributed-system-is">What a Distributed System is?</h3>
+<p><strong>A set of cooperating computers that are communicating with
+each other over network to get some coherent task done.</strong></p>
+<h4 id="examples">Examples</h4>
 <ul>
 <li>Storiage for big websites</li>
 <li>Big data computations (MapReduce)</li>
-<li>...</li>
+<li>…</li>
 </ul>
 <blockquote>
-<p>if you are designing a system, like you need to solve some problem <strong>if you can possibly solve it on a single computer without building a distributed system, you should do it that way</strong>. And there are many many jobs you can get done on a single computer and it's always easier. (distributed system are not simpler)</p>
+<p>if you are designing a system, like you need to solve some problem
+<strong>if you can possibly solve it on a single computer without
+building a distributed system, you should do it that way</strong>. And
+there are many many jobs you can get done on a single computer and it’s
+always easier. (distributed system are not simpler)</p>
 </blockquote>
-<h3>Why People Need a Distributed System?</h3>
-<p>Usually, the high-level goal of building a distributed system is to get what people call <strong>scalable speed-up</strong>.</p>
-<ol>
+<h3 id="why-people-need-a-distributed-system">Why People Need a
+Distributed System?</h3>
+<p>Usually, the high-level goal of building a distributed system is to
+get what people call <strong>scalable speed-up</strong>.</p>
+<ol type="1">
 <li><strong>Parallelism</strong></li>
 <li><strong>Fault tolerate</strong></li>
 <li>Physical reason</li>
 <li>Security / isolated</li>
 </ol>
-<h4>Challenges</h4>
+<h4 id="challenges">Challenges</h4>
 <ul>
 <li><strong>Concurrency</strong></li>
 <li>Partial failure</li>
 <li>Performance</li>
 </ul>
-<h3>To Build such Abstractions...</h3>
+<h3 id="to-build-such-abstractions">To Build such Abstractions…</h3>
 <blockquote>
-<p>The applications are going to use the <strong>infrastructure</strong> that we're thinking about in this course.</p>
+<p>The applications are going to use the <strong>infrastructure</strong>
+that we’re thinking about in this course.</p>
 </blockquote>
 <ul>
 <li><strong>Storage</strong></li>
@@ -105,46 +255,84 @@
 <li><strong>Computation</strong></li>
 </ul>
 <blockquote>
-<p>Our goal is to be able to <strong>discover abstractions where use of simplifying the interface to distributed storage and computation infrastructure</strong></p>
+<p>Our goal is to be able to <strong>discover abstractions where use of
+simplifying the interface to distributed storage and computation
+infrastructure</strong></p>
 </blockquote>
 <blockquote>
-<p>So that it is easy to build application on top of it, and what that really means is that <strong>we'd like to build abstraction that hide the distributed nature of these systems</strong></p>
+<p>So that it is easy to build application on top of it, and what that
+really means is that <strong>we’d like to build abstraction that hide
+the distributed nature of these systems</strong></p>
 </blockquote>
-<p><strong>&quot;We'd love to be able to build interfaces that look and act just like non-distributed storage and computation systems but are actually with vast and extremely high performance fault tolerant distributed systems underneath.&quot;</strong></p>
-<h4>Performance</h4>
+<p><strong>“We’d love to be able to build interfaces that look and act
+just like non-distributed storage and computation systems but are
+actually with vast and extremely high performance fault tolerant
+distributed systems underneath.”</strong></p>
+<h4 id="performance">Performance</h4>
 <ul>
-<li><strong>Scalability</strong>: (not infinite)<!-- raw HTML omitted -->
-<strong>2x computers -&gt; 2x throughput</strong> (huge win)</li>
+<li><strong>Scalability</strong>: (not infinite)<br> <strong>2x
+computers -&gt; 2x throughput</strong> (huge win)</li>
 </ul>
-<h4>Fault Tolerance</h4>
+<h4 id="fault-tolerance">Fault Tolerance</h4>
 <ul>
-<li>Big distributed systems: <strong>failure problems just happen all the time!</strong></li>
+<li>Big distributed systems: <strong>failure problems just happen all
+the time!</strong></li>
 </ul>
 <blockquote>
-<p><strong>Big scale turns problems from very rare events you don't have to worry about that much</strong> (one server runs in a room, only one person will visit its website) <strong>into just constant problems that means the failure has to be really has to be built into the design</strong></p>
+<p><strong>Big scale turns problems from very rare events you don’t have
+to worry about that much</strong> (one server runs in a room, only one
+person will visit its website) <strong>into just constant problems that
+means the failure has to be really has to be built into the
+design</strong></p>
 </blockquote>
-<h5>Availability:</h5>
-<p>in some faliure circumstance, the system will keep operating despite the failure while providing undamaged service.</p>
-<h5>Recoverability:</h5>
-<p>if something goes wrong, maybe the server will stop working that it'll simply stop responding to requests and it will wait for someone to come along and repair whatever went wrong, but after the repair occurs, the system will be able to continue as if nothing bad had gone wrong.</p>
-<h4>Consistency</h4>
+<h5 id="availability">Availability:</h5>
+<p>in some faliure circumstance, the system will keep operating despite
+the failure while providing undamaged service. ##### Recoverability: if
+something goes wrong, maybe the server will stop working that it’ll
+simply stop responding to requests and it will wait for someone to come
+along and repair whatever went wrong, but after the repair occurs, the
+system will be able to continue as if nothing bad had gone wrong.</p>
+<h4 id="consistency">Consistency</h4>
 <p>Communication problem (Weak and Strong)</p>
-<h2>2. MapReduce</h2>
-<p>Back to 2004, engineers in Google have implemented hundreds of special-purpose computations that process large amounts of raw data. Such as building a index of the web, and handle crawled documents, web requests logs, etc.<!-- raw HTML omitted -->
-<strong>However, the input data is usually large and the computations have to be distributed across hundreds or thousands of machines in order to finish in a reasonable amount of time.</strong><!-- raw HTML omitted -->
-<strong>How to parallelize the computation, distribute the data, and handle failures</strong>, soon becames a big question.<!-- raw HTML omitted --></p>
-<p>So they really needed some <strong>kind of framework</strong> that would make it easy to just have their engineers write the kind of guts of whatever analysis they wanted to do, like sort algorithm or a web index or link analyzer or whatever. <!-- raw HTML omitted -->
-<strong>Just write the guts of that application and be able to run it on a thousands of computers without worrying about the details of how to spread the work over the thousands of computers how to organize whatever data movement was required, or how to cope with the inevitable failures.</strong></p>
-<h4>In short, they were looking for a framework that would make it easy for non-specialists to be able to write and run giant distributed computations.</h4>
-<h5>Solution: MapReduce</h5>
+<h2 id="mapreduce">2. MapReduce</h2>
+<p>Back to 2004, engineers in Google have implemented hundreds of
+special-purpose computations that process large amounts of raw data.
+Such as building a index of the web, and handle crawled documents, web
+requests logs, etc.<br> <strong>However, the input data is usually large
+and the computations have to be distributed across hundreds or thousands
+of machines in order to finish in a reasonable amount of
+time.</strong><br> <strong>How to parallelize the computation,
+distribute the data, and handle failures</strong>, soon becames a big
+question.<br></p>
+<p>So they really needed some <strong>kind of framework</strong> that
+would make it easy to just have their engineers write the kind of guts
+of whatever analysis they wanted to do, like sort algorithm or a web
+index or link analyzer or whatever. <br> <strong>Just write the guts of
+that application and be able to run it on a thousands of computers
+without worrying about the details of how to spread the work over the
+thousands of computers how to organize whatever data movement was
+required, or how to cope with the inevitable failures.</strong></p>
+<h4
+id="in-short-they-were-looking-for-a-framework-that-would-make-it-easy-for-non-specialists-to-be-able-to-write-and-run-giant-distributed-computations.">In
+short, they were looking for a framework that would make it easy for
+non-specialists to be able to write and run giant distributed
+computations.</h4>
+<h5 id="solution-mapreduce">Solution: MapReduce</h5>
 <ul>
-<li><strong><a href="../papers/MapReduce/mapreduce.pdf">Link to the paper</a></strong></li>
-<li><strong><a href="../papers/mapreduce.md">Link to my notes</a></strong></li>
+<li><strong><a href="../papers/MapReduce/mapreduce.pdf">Link to the
+paper</a></strong></li>
+<li><strong><a href="../papers/mapreduce.md">Link to my
+notes</a></strong></li>
 </ul>
-<h3>Simple Example: Word Count</h3>
-<p><img src="Sources/mapreduceex.png" alt="mapreduceex"></p>
-<p>This above figure shows a simple programmers'view of <strong>MapReduce</strong>.<!-- raw HTML omitted -->
-<strong>In order to count words in some very huge files (TB), the programmer just need to write this kind of psudo-code:</strong></p>
+<h3 id="simple-example-word-count">Simple Example: Word Count</h3>
+<figure>
+<img src="Sources/mapreduceex.png" alt="mapreduceex" />
+<figcaption aria-hidden="true">mapreduceex</figcaption>
+</figure>
+<p>This above figure shows a simple programmers’view of
+<strong>MapReduce</strong>.<br> <strong>In order to count words in some
+very huge files (TB), the programmer just need to write this kind of
+psudo-code:</strong></p>
 <pre><code>Map(k, v)
     split v into words
     for each word w
@@ -152,9 +340,11 @@
 
 
 Reduce(k, v)
-    emit(len(v))
-</code></pre>
-<p><img src="Sources/mapreduce.png" alt="mapreduce"></p>
+    emit(len(v))</code></pre>
+<figure>
+<img src="Sources/mapreduce.png" alt="mapreduce" />
+<figcaption aria-hidden="true">mapreduce</figcaption>
+</figure>
 	</section>
 	</div>
     </div>
@@ -194,6 +384,10 @@ this.page.identifier = "ds/docs/lectures/1Introduction.html"
    </div>
 </footer>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
 <script src="../../../theme/js/bootstrap.min.js"></script>
 
 <!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->

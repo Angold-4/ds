@@ -10,7 +10,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <link href="../../../images/favicon.png" rel="icon">
-
 <link rel="canonical" href=".">
         <meta name="author" content="Angold Wang" />
 
@@ -26,6 +25,128 @@
 
     <link href="../../../theme/css/pygments/monokai.css" rel="stylesheet">
     <link rel="stylesheet" href="../../../theme/css/style.css" type="text/css"/>
+
+  <style>
+
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+
+    li {
+      font-size: 18px;
+    }
+
+    p {
+      font-size: 18px;
+    }
+
+    a {
+      font-size: 18px;
+    }
+
+    k
+
+    code {
+      font-family: Menlo, Monaco, 'Lucida Console', Consolas, monospace;
+      font-size: 85%;
+      margin: 0;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+    {   }
+
+    @media screen {
+      pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
 
 </head>
 <body>
@@ -64,92 +185,124 @@
     <div class="row">
         <div class="col-lg-12">
 	<section id="content" class="body">
-
-
-
-<h1>2. RPC and Threads</h1>
-<h5>09/02/2022 By Angold Wang</h5>
-<h2>1. RPC and Threads in Golang</h2>
-<h3>1. Why Go?</h3>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#rpc-and-threads" id="toc-rpc-and-threads">2. RPC and
+Threads</a>
+<ul>
+<li><a href="#rpc-and-threads-in-golang"
+id="toc-rpc-and-threads-in-golang">1. RPC and Threads in Golang</a>
+<ul>
+<li><a href="#why-go" id="toc-why-go">1. Why Go?</a></li>
+<li><a href="#threads" id="toc-threads">2. Threads</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+<h1 id="rpc-and-threads">2. RPC and Threads</h1>
+<h5 id="by-angold-wang">09/02/2022 By Angold Wang</h5>
+<h2 id="rpc-and-threads-in-golang">1. RPC and Threads in Golang</h2>
+<h3 id="why-go">1. Why Go?</h3>
 <ul>
 <li>Good support for threads (go routine)</li>
 <li>Convenient RPC</li>
 <li>Threads + GC is particularly attractive</li>
 <li>Relatively Simple (easy to debug)</li>
 </ul>
-<h3>2. Threads</h3>
-<h5>&quot;Allow different parts of the program to sort of be in its own point in a different activity.&quot;</h5>
-<h5>Each thread includes some per-thread state: <code>(pc, reg, stack)</code>.</h5>
-<ul>
-<li>
-<p>[x] <strong>I/O concurrency</strong></p>
-<ul>
-<li>While some threads are waiting for I/O, other threads can utilize the CPU resources.</li>
-</ul>
-</li>
-<li>
-<p>[x] <strong>Parallelism</strong></p>
-<ul>
+<h3 id="threads">2. Threads</h3>
+<h5
+id="allow-different-parts-of-the-program-to-sort-of-be-in-its-own-point-in-a-different-activity.">“Allow
+different parts of the program to sort of be in its own point in a
+different activity.”</h5>
+<h5 id="each-thread-includes-some-per-thread-state-pc-reg-stack.">Each
+thread includes some per-thread state:
+<code>(pc, reg, stack)</code>.</h5>
+<ul class="task-list">
+<li><input type="checkbox" disabled="" checked="" />
+<strong>I/O concurrency</strong><ul>
+<li>While some threads are waiting for I/O, other threads can utilize
+the CPU resources.</li>
+</ul></li>
+<li><input type="checkbox" disabled="" checked="" />
+<strong>Parallelism</strong><ul>
 <li>Execute code in parallel on several cores.</li>
+</ul></li>
+<li><input type="checkbox" disabled="" checked="" />
+<strong>Convinience</strong><ul>
+<li>relatively simple to programming (compare with event-driven
+process)</li>
+</ul></li>
 </ul>
-</li>
-<li>
-<p>[x] <strong>Convinience</strong></p>
+<p>To have a better understanding of threads, let’s compare to its
+alternative:</p>
+<h4 id="event-driven-process">Event-driven Process</h4>
+<h5
+id="way-that-write-code-that-explicitly-interleaves-activities-in-a-single-thread.">“Way
+that write code that explicitly interleaves activities, in a single
+thread.”</h5>
 <ul>
-<li>relatively simple to programming (compare with event-driven process)</li>
-</ul>
-</li>
-</ul>
-<p>To have a better understanding of threads, let's compare to its alternative:</p>
-<h4>Event-driven Process</h4>
-<h5>&quot;Way that write code that explicitly interleaves activities, in a single thread.&quot;</h5>
-<ul>
-<li>
-<p><strong>Implementation Details:</strong></p>
+<li><strong>Implementation Details:</strong>
 <ul>
 <li>keep a table of each of state about each activity</li>
-<li>One &quot;event&quot; loop that:
-<ol>
+<li>One “event” loop that:
+<ol type="1">
 <li>Checks for new input for each activity</li>
 <li>Does the next step for each activity</li>
 <li>Update the state table</li>
-</ol>
-</li>
-</ul>
-</li>
-<li>
-<p>[x] <strong>I/O concurrency</strong></p>
-<ul>
-<li>The program can pick current unblocked activity to run (just like in threads)</li>
+</ol></li>
+</ul></li>
+<li><input type="checkbox" disabled="" checked="" />
+<strong>I/O concurrency</strong><ul>
+<li>The program can pick current unblocked activity to run (just like in
+threads)</li>
 <li>It can eliminates thread costs (which can be substantial)</li>
+</ul></li>
+<li><input type="checkbox" disabled="" />
+<strong>Parallelism</strong><ul>
+<li>There are no parallelism in multi-core machine (Only one
+thread)</li>
+</ul></li>
+<li><input type="checkbox" disabled="" />
+<strong>Convenience</strong><ul>
+<li>It is usually painful to program, compare to implement with
+thread</li>
+</ul></li>
 </ul>
-</li>
-<li>
-<p>[ ] <strong>Parallelism</strong></p>
-<ul>
-<li>There are no parallelism in multi-core machine (Only one thread)</li>
-</ul>
-</li>
-<li>
-<p>[ ] <strong>Convenience</strong></p>
-<ul>
-<li>It is usually painful to program, compare to implement with thread</li>
-</ul>
-</li>
-</ul>
-<h4>Multiple Process <code>(folk)</code></h4>
-<h5>&quot;Folk multiple process, just runs like multiple threads, which will gives you thread-like I/O concurrency, and parallelism.&quot;</h5>
-<p>Although in user space, thread seems look like is implemented by the language itself, i.e. Some OS books says &quot;the kernel is not aware of the existence of threads.&quot;<!-- raw HTML omitted -->
-<strong>In my opinion, thread is some sort of the minimum-executable unit in the machine.<!-- raw HTML omitted --></strong>
-<strong>Which means, in some low-level perspective, a thread has no difference than a process, They are all just executable routines with its own states.</strong><!-- raw HTML omitted --></p>
+<h4 id="multiple-process-folk">Multiple Process <code>(folk)</code></h4>
+<h5
+id="folk-multiple-process-just-runs-like-multiple-threads-which-will-gives-you-thread-like-io-concurrency-and-parallelism.">“Folk
+multiple process, just runs like multiple threads, which will gives you
+thread-like I/O concurrency, and parallelism.”</h5>
+<p>Although in user space, thread seems look like is implemented by the
+language itself, i.e. Some OS books says “the kernel is not aware of the
+existence of threads.”<br> <strong>In my opinion, thread is some sort of
+the minimum-executable unit in the machine.<br></strong> <strong>Which
+means, in some low-level perspective, a thread has no difference than a
+process, They are all just executable routines with its own
+states.</strong><br></p>
 <blockquote>
-<p>i.e. For instance, think of a multi-core machine, when there are multiple threads runs on it, it just like multiple processes with same address space.</p>
+<p>i.e. For instance, think of a multi-core machine, when there are
+multiple threads runs on it, it just like multiple processes with same
+address space.</p>
 </blockquote>
-<h5>From an Operating System point of view, there are two stages of scheduling: First, the Process scheduler pick a process to run, which contains one or more routines and its own address space. Second, for each process, the written language implements the details of their execution (threads or whatever).</h5>
-<p>Compare to multi-threading, when there are multiple processes runs in different cores, the communication between them costs much.(compare to threads, since threads are on the same address space.) And the context switching between each process also costs much (OS sheduler v.s. Thread scheduler in language).</p>
-<h5>Threading Challenges</h5>
-<p>Threads are convenient, because a lot of times they allow you to write the code for each thread just as if it were a pretty ordinary sequenial program.<!-- raw HTML omitted --></p>
-<p>Since all threads in the same process are in the same address space. There are also some unexpected errors occurs:</p>
+<h5
+id="from-an-operating-system-point-of-view-there-are-two-stages-of-scheduling-first-the-process-scheduler-pick-a-process-to-run-which-contains-one-or-more-routines-and-its-own-address-space.-second-for-each-process-the-written-language-implements-the-details-of-their-execution-threads-or-whatever.">From
+an Operating System point of view, there are two stages of scheduling:
+First, the Process scheduler pick a process to run, which contains one
+or more routines and its own address space. Second, for each process,
+the written language implements the details of their execution (threads
+or whatever).</h5>
+<p>Compare to multi-threading, when there are multiple processes runs in
+different cores, the communication between them costs much.(compare to
+threads, since threads are on the same address space.) And the context
+switching between each process also costs much (OS sheduler v.s. Thread
+scheduler in language).</p>
+<h5 id="threading-challenges">Threading Challenges</h5>
+<p>Threads are convenient, because a lot of times they allow you to
+write the code for each thread just as if it were a pretty ordinary
+sequenial program.<br></p>
+<p>Since all threads in the same process are in the same address space.
+There are also some unexpected errors occurs:</p>
 <ul>
 <li>Race Condition</li>
 <li>Coordination</li>
@@ -194,6 +347,10 @@ this.page.identifier = "ds/docs/lectures/2RPCandThreads.html"
    </div>
 </footer>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
 <script src="../../../theme/js/bootstrap.min.js"></script>
 
 <!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->

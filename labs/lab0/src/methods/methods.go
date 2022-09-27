@@ -11,7 +11,7 @@ type Vertex struct {
 
 // Go does not have classes. 
 // But you can define methods on types
-// A method is a fnction with a special receiver argument
+// A method is a function with a special receiver argument
 func (v Vertex) Abs() float64 {
     return math.Sqrt(v.X * v.X + v.Y * v.Y)
 }

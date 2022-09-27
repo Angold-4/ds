@@ -10,7 +10,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <link href="../../../images/favicon.png" rel="icon">
-
 <link rel="canonical" href=".">
         <meta name="author" content="Angold Wang" />
 
@@ -26,6 +25,128 @@
 
     <link href="../../../theme/css/pygments/monokai.css" rel="stylesheet">
     <link rel="stylesheet" href="../../../theme/css/style.css" type="text/css"/>
+
+  <style>
+
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+
+    li {
+      font-size: 18px;
+    }
+
+    p {
+      font-size: 18px;
+    }
+
+    a {
+      font-size: 18px;
+    }
+
+    k
+
+    code {
+      font-family: Menlo, Monaco, 'Lucida Console', Consolas, monospace;
+      font-size: 85%;
+      margin: 0;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+    {   }
+
+    @media screen {
+      pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
 
 </head>
 <body>
@@ -64,199 +185,392 @@
     <div class="row">
         <div class="col-lg-12">
 	<section id="content" class="body">
-
-
-
-<h1>MapReduce Notes</h1>
-<p><strong>By <a href="https://github.com/Angold-4">Angold Wang</a> | <a href="mapreduce.pdf">Original Paper</a></strong></p>
-<h2>1. Introduction</h2>
-<p>Back to 2004, engineers in Google have implemented hundreds of special-purpose computations that process large amounts of raw data. Such as building a index of the web, and handle crawled documents, web requests logs, etc.<!-- raw HTML omitted -->
-<strong>However, the input data is usually large and the computations have to be distributed across hundreds or thousands of machines in order to finish in a reasonable amount of time.</strong><!-- raw HTML omitted -->
-<strong>How to parallelize the computation, distribute the data, and handle failures</strong>, soon becames a big question.<!-- raw HTML omitted --></p>
-<p>So they really needed some <strong>kind of framework</strong> that would make it easy to just have their engineers write the kind of guts of whatever analysis they wanted to do, like sort algorithm or a web index or link analyzer or whatever. <!-- raw HTML omitted -->
-<strong>Just write the guts of that application and be able to run it on a thousands of computers without worrying about the details of how to spread the work over the thousands of computers how to organize whatever data movement was required, or how to cope with the inevitable failures.</strong></p>
-<h4>In short, they were looking for a framework that would make it easy for non-specialists to be able to write and run giant distributed computations.</h4>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#mapreduce-notes" id="toc-mapreduce-notes">MapReduce
+Notes</a>
+<ul>
+<li><a href="#introduction" id="toc-introduction">1.
+Introduction</a></li>
+<li><a href="#programming-model" id="toc-programming-model">2.
+Programming Model</a>
+<ul>
+<li><a href="#example-word-count" id="toc-example-word-count">Example:
+word count</a></li>
+</ul></li>
+<li><a href="#implementation-details" id="toc-implementation-details">3.
+Implementation Details</a>
+<ul>
+<li><a href="#runtime-details-papers-figure-1"
+id="toc-runtime-details-papers-figure-1">1. Runtime Details (paper’s
+Figure 1):</a></li>
+<li><a href="#fault-tolerance" id="toc-fault-tolerance">2. Fault
+Tolerance</a></li>
+<li><a href="#locality" id="toc-locality">3. Locality</a></li>
+<li><a href="#task-granularity" id="toc-task-granularity">4. Task
+Granularity</a></li>
+<li><a href="#backup-tasks" id="toc-backup-tasks">5. Backup
+Tasks</a></li>
+</ul></li>
+<li><a href="#practice-performance" id="toc-practice-performance">4.
+Practice Performance</a>
+<ul>
+<li><a href="#grep" id="toc-grep">1. Grep</a></li>
+<li><a href="#sort" id="toc-sort">2. Sort</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+<h1 id="mapreduce-notes">MapReduce Notes</h1>
+<p><strong>By <a href="https://github.com/Angold-4">Angold Wang</a> | <a
+href="mapreduce.pdf">Original Paper</a></strong></p>
+<h2 id="introduction">1. Introduction</h2>
+<p>Back to 2004, engineers in Google have implemented hundreds of
+special-purpose computations that process large amounts of raw data.
+Such as building a index of the web, and handle crawled documents, web
+requests logs, etc.<br> <strong>However, the input data is usually large
+and the computations have to be distributed across hundreds or thousands
+of machines in order to finish in a reasonable amount of
+time.</strong><br> <strong>How to parallelize the computation,
+distribute the data, and handle failures</strong>, soon becames a big
+question.<br></p>
+<p>So they really needed some <strong>kind of framework</strong> that
+would make it easy to just have their engineers write the kind of guts
+of whatever analysis they wanted to do, like sort algorithm or a web
+index or link analyzer or whatever. <br> <strong>Just write the guts of
+that application and be able to run it on a thousands of computers
+without worrying about the details of how to spread the work over the
+thousands of computers how to organize whatever data movement was
+required, or how to cope with the inevitable failures.</strong></p>
+<h4
+id="in-short-they-were-looking-for-a-framework-that-would-make-it-easy-for-non-specialists-to-be-able-to-write-and-run-giant-distributed-computations.">In
+short, they were looking for a framework that would make it easy for
+non-specialists to be able to write and run giant distributed
+computations.</h4>
 <ul>
 <li>Multi-hour Computations</li>
 <li>Multi-terabyte Datasets</li>
 </ul>
-<h2>2. Programming Model</h2>
-<p><strong>In a programmer's view, the computation recieves many files, and takes a set of input key/value pairs, then produces a set of output key/value pairs.</strong></p>
-<h3>Example: word count</h3>
-<p><img src="Sources/mapreduceex.png" alt="mapreduceex"></p>
-<h4>Abstract view of a MapReduce job:</h4>
-<h4>Map</h4>
+<h2 id="programming-model">2. Programming Model</h2>
+<p><strong>In a programmer’s view, the computation recieves many files,
+and takes a set of input key/value pairs, then produces a set of output
+key/value pairs.</strong></p>
+<h3 id="example-word-count">Example: word count</h3>
+<figure>
+<img src="Sources/mapreduceex.png" alt="mapreduceex" />
+<figcaption aria-hidden="true">mapreduceex</figcaption>
+</figure>
+<h4 id="abstract-view-of-a-mapreduce-job">Abstract view of a MapReduce
+job:</h4>
+<h4 id="map">Map</h4>
 <ul>
 <li>Written by the User.</li>
-<li>Recieve input files and then produces a set of output key/value pairs.</li>
-<li>MR calls <code>map(k, v)</code> for each input file <code>k</code>, and its contains <code>v</code>, produces set of <code>k2</code>, <code>v2</code> &quot; intermediate&quot; data.</li>
+<li>Recieve input files and then produces a set of output key/value
+pairs.</li>
+<li>MR calls <code>map(k, v)</code> for each input file <code>k</code>,
+and its contains <code>v</code>, produces set of <code>k2</code>,
+<code>v2</code> ” intermediate” data.</li>
 </ul>
-<pre><code class="language-javascript">map(String key, String value) {
-    // key: document name
-    // value: document contents
-    for each word w in value:
-        Emit(w, &quot;1&quot;);
-}
-</code></pre>
-<h4>Reduce</h4>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">map</span>(<span class="bu">String</span> key<span class="op">,</span> <span class="bu">String</span> value) {</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">// key: document name</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">// value: document contents</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> each word w <span class="kw">in</span> <span class="dt">value</span><span class="op">:</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>        <span class="fu">Emit</span>(w<span class="op">,</span> <span class="st">&quot;1&quot;</span>)<span class="op">;</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<h4 id="reduce">Reduce</h4>
 <ul>
 <li>Wirtten by the user.</li>
 <li>Recieve key/value pairs from <strong><code>Map</code></strong>.</li>
-<li>Then merge together these values with same key to <strong>form a possibly smaller set of values</strong>.</li>
-<li>MR gathers all intermediate <code>v2</code> for a given <code>k2</code>, and passes each key + values to a reduce call.</li>
-<li>Final outut is set of &lt;k2, v3&gt; pairs from <code>reduce(k2, v2)</code>s.</li>
+<li>Then merge together these values with same key to <strong>form a
+possibly smaller set of values</strong>.</li>
+<li>MR gathers all intermediate <code>v2</code> for a given
+<code>k2</code>, and passes each key + values to a reduce call.</li>
+<li>Final outut is set of &lt;k2, v3&gt; pairs from
+<code>reduce(k2, v2)</code>s.</li>
 </ul>
-<pre><code class="language-javascript">reduce(k, v)
-    // key: a word
-    // value: a list of counts
-    int result = 0; 
-    for each v in values:
-        result += ParseInt(v);
-    Emit(AsString(result));
-</code></pre>
-<pre><code class="language-javascript">// or in this way:
-reduce(k, v)
-    emit(len(v));
-</code></pre>
-<h4>MapReduce scales well</h4>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">reduce</span>(k<span class="op">,</span> v)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">// key: a word</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">// value: a list of counts</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    int result <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> </span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> each v <span class="kw">in</span> values<span class="op">:</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>        result <span class="op">+=</span> <span class="fu">ParseInt</span>(v)<span class="op">;</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">Emit</span>(<span class="fu">AsString</span>(result))<span class="op">;</span></span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">// or in this way:</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">reduce</span>(k<span class="op">,</span> v)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">emit</span>(<span class="fu">len</span>(v))<span class="op">;</span></span></code></pre></div>
+<h4 id="mapreduce-scales-well">MapReduce scales well</h4>
 <ul>
-<li>N &quot;worker&quot; computers get you Nx throughtput.</li>
-<li><code>map</code>s can run in parallel, since they don't interact. Same for <code>reduce</code>s.</li>
-<li>In that way, you can get more throughtput by buying more computers.</li>
+<li>N “worker” computers get you Nx throughtput.</li>
+<li><code>map</code>s can run in parallel, since they don’t interact.
+Same for <code>reduce</code>s.</li>
+<li>In that way, you can get more throughtput by buying more
+computers.</li>
 </ul>
-<h2>3. Implementation Details</h2>
-<p><img src="Sources/mapreduce.png" alt="mapreduce"></p>
-<h3>1. Runtime Details (paper's Figure 1):</h3>
-<ol>
-<li>
-<p><strong>The input and output are stored on a cluster file system called GFS (Google File System), where the part of MapReduce library splites files over many servers, in typically 16MB to 64MB piece. It then starts up many copies of the prgram on a cluster of machines.</strong></p>
-</li>
-<li>
-<p><strong>One of the copies of the program is special -&gt; the master, the rest are workers that are assigned work by the master. Let's say there are M map tasks and R reduce tasks to assign. The master pick idle workers and assigns each one a map task or a reduce task.</strong></p>
-</li>
-<li>
-<p><strong>Master gives Map tasks to workers until all <code>map()</code>s complete. A worker who is assigned a map task reads the contents of the corresponding input split, and then write output (intermediate data) to local disk.</strong></p>
-</li>
-<li>
-<p><strong>Periodically, the intermediate data pairs are written to local disk of each Map workers (in region groups), and the locations of each worker's disk group are passed back to the master, who is responsible for forwarding these locations to the Reduce</strong></p>
-</li>
-<li>
-<p><strong>After all Mapes have finished, master hands out Reduce tasks, when a Reduce workers is notified by the master about these locations (different regions), it read the data from disk from map workers. When a Reduce worker has read all intermediate datam it sorts it by the intermediate keys so that all occurrences of the same keys are grouped together</strong>.</p>
-</li>
-<li>
-<p><strong>The reduce worker iterates over the sorted intermediate data and for each unique intermediate key encounted, it passes the key and the corresponding set of intermediate values to the user's Reduce function, and write the output file on GFS.</strong></p>
-</li>
+<h2 id="implementation-details">3. Implementation Details</h2>
+<figure>
+<img src="Sources/mapreduce.png" alt="mapreduce" />
+<figcaption aria-hidden="true">mapreduce</figcaption>
+</figure>
+<h3 id="runtime-details-papers-figure-1">1. Runtime Details (paper’s
+Figure 1):</h3>
+<ol type="1">
+<li><p><strong>The input and output are stored on a cluster file system
+called GFS (Google File System), where the part of MapReduce library
+splites files over many servers, in typically 16MB to 64MB piece. It
+then starts up many copies of the prgram on a cluster of
+machines.</strong></p></li>
+<li><p><strong>One of the copies of the program is special -&gt; the
+master, the rest are workers that are assigned work by the master. Let’s
+say there are M map tasks and R reduce tasks to assign. The master pick
+idle workers and assigns each one a map task or a reduce
+task.</strong></p></li>
+<li><p><strong>Master gives Map tasks to workers until all
+<code>map()</code>s complete. A worker who is assigned a map task reads
+the contents of the corresponding input split, and then write output
+(intermediate data) to local disk.</strong></p></li>
+<li><p><strong>Periodically, the intermediate data pairs are written to
+local disk of each Map workers (in region groups), and the locations of
+each worker’s disk group are passed back to the master, who is
+responsible for forwarding these locations to the
+Reduce</strong></p></li>
+<li><p><strong>After all Mapes have finished, master hands out Reduce
+tasks, when a Reduce workers is notified by the master about these
+locations (different regions), it read the data from disk from map
+workers. When a Reduce worker has read all intermediate datam it sorts
+it by the intermediate keys so that all occurrences of the same keys are
+grouped together</strong>.</p></li>
+<li><p><strong>The reduce worker iterates over the sorted intermediate
+data and for each unique intermediate key encounted, it passes the key
+and the corresponding set of intermediate values to the user’s Reduce
+function, and write the output file on GFS.</strong></p></li>
 </ol>
-<p><strong>Finally, when all map tasks and reduce tasks have been compeleted, the master wakes up the user program. At this point, the MapReduce call in the user program returns back to the user code.</strong></p>
-<p><strong><a href="https://github.com/Angold-4/ds/tree/main/6.824/src">One way to implement Mapreduce</a></strong> (Using RPC and Threads in golang):</p>
-<p><img src="../../docs/lectures/Sources/gpmgoroutine.png" alt="gpmgoroutine"></p>
-<h3>2. Fault Tolerance</h3>
-<p>Since the MapReduce library is designed to help process very large amounts of data using hundreds or thousands of machines, the library must tolerate machine failures gracefullly. (Must insert fault tolerance into its design)</p>
-<p>The master keeps several data structures.<!-- raw HTML omitted -->
-<strong>For each map task and reduce task. it stores the state (idle, in-progress, or completed), and the identity of the worker machine.</strong></p>
-<h4>Worker Failure</h4>
-<h5>We want to completely hide failures from the application programmer.</h5>
-<p><strong>The master pings every worker periodically. If no response is recieived from a worker in a certain amount of time, the master marks the worker as failed. MR re-runs just the failed <code>map</code>s and <code>reduce</code>s.</strong></p>
-<h4>Details of worker crash recovery</h4>
-<h4>Map worker crashes:</h4>
+<p><strong>Finally, when all map tasks and reduce tasks have been
+compeleted, the master wakes up the user program. At this point, the
+MapReduce call in the user program returns back to the user
+code.</strong></p>
+<p><strong><a
+href="https://github.com/Angold-4/ds/tree/main/6.824/src">One way to
+implement Mapreduce</a></strong> (Using RPC and Threads in golang):</p>
+<figure>
+<img src="../../docs/lectures/Sources/gpmgoroutine.png"
+alt="gpmgoroutine" />
+<figcaption aria-hidden="true">gpmgoroutine</figcaption>
+</figure>
+<h3 id="fault-tolerance">2. Fault Tolerance</h3>
+<p>Since the MapReduce library is designed to help process very large
+amounts of data using hundreds or thousands of machines, the library
+must tolerate machine failures gracefullly. (Must insert fault tolerance
+into its design)</p>
+<p>The master keeps several data structures.<br> <strong>For each map
+task and reduce task. it stores the state (idle, in-progress, or
+completed), and the identity of the worker machine.</strong></p>
+<h4 id="worker-failure">Worker Failure</h4>
+<h5
+id="we-want-to-completely-hide-failures-from-the-application-programmer.">We
+want to completely hide failures from the application programmer.</h5>
+<p><strong>The master pings every worker periodically. If no response is
+recieived from a worker in a certain amount of time, the master marks
+the worker as failed. MR re-runs just the failed <code>map</code>s and
+<code>reduce</code>s.</strong></p>
+<h4 id="details-of-worker-crash-recovery">Details of worker crash
+recovery</h4>
+<h4 id="map-worker-crashes">Map worker crashes:</h4>
 <ul>
-<li><strong>Master notices worker no longer responds to pings.</strong></li>
-<li><strong>Master knows which map tasks it ran on the worker, since their output is stored on the failed machine and is there inaccessible by other Reduce workers (no write location back to the master), and the output must be re-executed.</strong></li>
-<li><strong>Then Master schedule another worker to run those failed tasks</strong></li>
-<li><strong>If some <code>reduce</code>s already fetched the intermediate data (if this <code>map</code> is already finished), the <code>reduce</code> need to be re-running</strong></li>
+<li><strong>Master notices worker no longer responds to
+pings.</strong></li>
+<li><strong>Master knows which map tasks it ran on the worker, since
+their output is stored on the failed machine and is there inaccessible
+by other Reduce workers (no write location back to the master), and the
+output must be re-executed.</strong></li>
+<li><strong>Then Master schedule another worker to run those failed
+tasks</strong></li>
+<li><strong>If some <code>reduce</code>s already fetched the
+intermediate data (if this <code>map</code> is already finished), the
+<code>reduce</code> need to be re-running</strong></li>
 </ul>
-<h4>Reduce worker crashes:</h4>
+<h4 id="reduce-worker-crashes">Reduce worker crashes:</h4>
 <ul>
-<li><strong>Master re-starts worker's unfinished tasks on other workers.</strong></li>
+<li><strong>Master re-starts worker’s unfinished tasks on other
+workers.</strong></li>
 </ul>
-<h4>Master Failure</h4>
+<h4 id="master-failure">Master Failure</h4>
 <ul>
-<li><strong>During the runtime of Master, the master program will write periodic checkpoints to the master data structures.</strong></li>
-<li><strong>If the master task dies, a new copy can be started fromm the last checkpointed state.</strong></li>
+<li><strong>During the runtime of Master, the master program will write
+periodic checkpoints to the master data structures.</strong></li>
+<li><strong>If the master task dies, a new copy can be started fromm the
+last checkpointed state.</strong></li>
 </ul>
-<h3>3. Locality</h3>
-<h5>What will likely limit the performance of MapReduce?</h5>
-<p><strong>In 2004, authors were limited by network capacity, the paper's root switch: 100 to 200 gigabits/second, total 1800 machines, so 55 megabits/second/machine. which is relatively small (e.g. much less than disk or RAM speed)</strong></p>
-<h5>How MR minimize network use?</h5>
+<h3 id="locality">3. Locality</h3>
+<h5 id="what-will-likely-limit-the-performance-of-mapreduce">What will
+likely limit the performance of MapReduce?</h5>
+<p><strong>In 2004, authors were limited by network capacity, the
+paper’s root switch: 100 to 200 gigabits/second, total 1800 machines, so
+55 megabits/second/machine. which is relatively small (e.g. much less
+than disk or RAM speed)</strong></p>
+<h5 id="how-mr-minimize-network-use">How MR minimize network use?</h5>
 <ul>
-<li><strong>Master tries to run each Map task on GFS Server where stores its input. (i.e. all computers run both GFS and MR workers) so input is read from local disk, not over network.</strong></li>
-<li><strong>Intermediate data goes over network just once. which from Map workers' local disk -&gt; Reduce workers, rather than using GFS.</strong></li>
+<li><strong>Master tries to run each Map task on GFS Server where stores
+its input. (i.e. all computers run both GFS and MR workers) so input is
+read from local disk, not over network.</strong></li>
+<li><strong>Intermediate data goes over network just once. which from
+Map workers’ local disk -&gt; Reduce workers, rather than using
+GFS.</strong></li>
 </ul>
-<h3>4. Task Granularity</h3>
-<h5>How does MR get good load balance?</h5>
-<p><strong>Wasteful and slow if N-1 servers have to wait for 1 slow server to finish. But the fact is that some tasks likely take longer than others.</strong><!-- raw HTML omitted --></p>
-<p><strong>We subdivide the map phase into M pieces and the reduce phase into R pieces. Ideally, M and R should be much larger than the number of worker machines. (i.e. many more tasks than workers).<!-- raw HTML omitted --></strong></p>
-<p><strong>Master hands out new tasks to workers who finish previous tasks, so &quot;faster&quot; servers do more than &quot;slower&quot; ones, finish about the same time(hopefully), which improves dynamic load balancing.</strong><!-- raw HTML omitted --></p>
-<p>But there are also some limitations of how large M and R can be, some kind of &quot;trade-off&quot;, since the Master must make <code>O(M + R)</code> scheduling decisions.<!-- raw HTML omitted -->
-In practice, we often perform MapReduce computations with M = 200,000 and R = 5,000 using 2,000 worker machines.</p>
-<h3>5. Backup Tasks</h3>
-<p><strong>One of the common causes that lengthens the total time taken for a MapReduce operation is a &quot;straggler&quot;: a machine that takses an unusually long time to complete its works.</strong><!-- raw HTML omitted --></p>
-<p><strong>Which means, a machine can compelete its works, but costs too much times than other machine doing the same job. The reason of that is usually some correctable errors that slow its performance, like disk problem, or the competition for CPU, memory, network bandwidth.</strong><!-- raw HTML omitted --></p>
-<p><strong>The engineers in Google have a general mechanism to alleviate the problem of stragglers: When a MapReduce operation is close to completion, the Master schedules backup executions of the remaining</strong> <em>in-progress</em> <strong>tasks. The task is marked as completed whenever either the primary of the backup execution completions.</strong></p>
-<h2>4. Practice Performance</h2>
-<p><strong>I am not going to list the Refinements mentioned in the <a href="mapreduce.pdf">original paper</a>, In the last part of this note, I would like to bring some of my own throughts and understandings.</strong><!-- raw HTML omitted --></p>
-<p><strong>In this part, I am going to return to the practice from those theories mentioned above.</strong><!-- raw HTML omitted -->
-First, let me introduce the configuration of cluster, which is also listed in the paper:<!-- raw HTML omitted --></p>
+<h3 id="task-granularity">4. Task Granularity</h3>
+<h5 id="how-does-mr-get-good-load-balance">How does MR get good load
+balance?</h5>
+<p><strong>Wasteful and slow if N-1 servers have to wait for 1 slow
+server to finish. But the fact is that some tasks likely take longer
+than others.</strong><br></p>
+<p><strong>We subdivide the map phase into M pieces and the reduce phase
+into R pieces. Ideally, M and R should be much larger than the number of
+worker machines. (i.e. many more tasks than workers).<br></strong></p>
+<p><strong>Master hands out new tasks to workers who finish previous
+tasks, so “faster” servers do more than “slower” ones, finish about the
+same time(hopefully), which improves dynamic load
+balancing.</strong><br></p>
+<p>But there are also some limitations of how large M and R can be, some
+kind of “trade-off”, since the Master must make <code>O(M + R)</code>
+scheduling decisions.<br> In practice, we often perform MapReduce
+computations with M = 200,000 and R = 5,000 using 2,000 worker
+machines.</p>
+<h3 id="backup-tasks">5. Backup Tasks</h3>
+<p><strong>One of the common causes that lengthens the total time taken
+for a MapReduce operation is a “straggler”: a machine that takses an
+unusually long time to complete its works.</strong><br></p>
+<p><strong>Which means, a machine can compelete its works, but costs too
+much times than other machine doing the same job. The reason of that is
+usually some correctable errors that slow its performance, like disk
+problem, or the competition for CPU, memory, network
+bandwidth.</strong><br></p>
+<p><strong>The engineers in Google have a general mechanism to alleviate
+the problem of stragglers: When a MapReduce operation is close to
+completion, the Master schedules backup executions of the
+remaining</strong> <em>in-progress</em> <strong>tasks. The task is
+marked as completed whenever either the primary of the backup execution
+completions.</strong></p>
+<h2 id="practice-performance">4. Practice Performance</h2>
+<p><strong>I am not going to list the Refinements mentioned in the <a
+href="mapreduce.pdf">original paper</a>, In the last part of this note,
+I would like to bring some of my own throughts and
+understandings.</strong><br></p>
+<p><strong>In this part, I am going to return to the practice from those
+theories mentioned above.</strong><br> First, let me introduce the
+configuration of cluster, which is also listed in the paper:<br></p>
 <ul>
-<li>All of the programs were executed on a cluser that consisted of approximately 1800 machines.</li>
-<li>Each machine has two 2GHz Intel Xeon processors, 4GB of memory, two 160GB IDE disks.</li>
+<li>All of the programs were executed on a cluser that consisted of
+approximately 1800 machines.</li>
+<li>Each machine has two 2GHz Intel Xeon processors, 4GB of memory, two
+160GB IDE disks.</li>
 <li>All of the machines were in the same hosting facility.</li>
 </ul>
-<h3>1. Grep</h3>
-<p><strong><a href="https://en.wikipedia.org/wiki/Grep">Grep</a> is a program for searching plain-text data sets for lines that match a regular expression.</strong><!-- raw HTML omitted --></p>
-<p>Let's say, in this scenario, the <em>grep</em> program scans through 10^10 100 byte (0.96 TB) records. Searching for a relatively rare three-character pattern (the pattern occurs in 92,337 records).<!-- raw HTML omitted --></p>
-<p>We split the input into apporximately 64MB pieces (M = 15000), and the entire output is placed in one file (R = 1).</p>
-<p><strong>Figure 2 shows the progress of the computation over time.</strong></p>
-<p><img src="Sources/grep.png" alt="grep"></p>
-<h4>A Classic MapReduce Process:</h4>
-<ol>
-<li>
-<p><strong>At the very first 1 minute (didn't show in the figure), there is a overhead due to the propagation of the program to all worker machines, and delays interacting with GFS to open the set of 1000 input files and to get the information needed for the locality optimization.</strong></p>
-</li>
-<li>
-<p><strong>The Y-axis which is the data transfer rate gradually picks up as more machines are assigned to this MapReduce computation. And peaks at over 30GB/s.</strong></p>
-</li>
-<li>
-<p><strong>As map tasks finish, the rate starts dropping and hits zero about 80 seconds into the computation.</strong></p>
-</li>
+<h3 id="grep">1. Grep</h3>
+<p><strong><a href="https://en.wikipedia.org/wiki/Grep">Grep</a> is a
+program for searching plain-text data sets for lines that match a
+regular expression.</strong><br></p>
+<p>Let’s say, in this scenario, the <em>grep</em> program scans through
+10^10 100 byte (0.96 TB) records. Searching for a relatively rare
+three-character pattern (the pattern occurs in 92,337 records).<br></p>
+<p>We split the input into apporximately 64MB pieces (M = 15000), and
+the entire output is placed in one file (R = 1).</p>
+<p><strong>Figure 2 shows the progress of the computation over
+time.</strong></p>
+<figure>
+<img src="Sources/grep.png" alt="grep" />
+<figcaption aria-hidden="true">grep</figcaption>
+</figure>
+<h4 id="a-classic-mapreduce-process">A Classic MapReduce Process:</h4>
+<ol type="1">
+<li><p><strong>At the very first 1 minute (didn’t show in the figure),
+there is a overhead due to the propagation of the program to all worker
+machines, and delays interacting with GFS to open the set of 1000 input
+files and to get the information needed for the locality
+optimization.</strong></p></li>
+<li><p><strong>The Y-axis which is the data transfer rate gradually
+picks up as more machines are assigned to this MapReduce computation.
+And peaks at over 30GB/s.</strong></p></li>
+<li><p><strong>As map tasks finish, the rate starts dropping and hits
+zero about 80 seconds into the computation.</strong></p></li>
 </ol>
-<p><strong>So, It takes about 150 seconds to finish all the Grep tasks</strong></p>
-<h3>2. Sort</h3>
-<p><strong>The Sort program sorts approximately 1 terabyte of data.</strong><!-- raw HTML omitted -->
-<strong>You may wonder what sorting algorithm does google use in MapReduce:</strong><!-- raw HTML omitted --></p>
-<h4>1. TeraSort</h4>
+<p><strong>So, It takes about 150 seconds to finish all the Grep
+tasks</strong></p>
+<h3 id="sort">2. Sort</h3>
+<p><strong>The Sort program sorts approximately 1 terabyte of
+data.</strong><br> <strong>You may wonder what sorting algorithm does
+google use in MapReduce:</strong><br></p>
+<h4 id="terasort">1. TeraSort</h4>
 <blockquote>
-<p><strong><a href="TeraByteSort.pdf">TeraSort</a> is a standard MapReduce sort.</strong> <!-- raw HTML omitted -->In particular, the partitioner (uses trie) and Map workers will send all keys such that <code>sample[i-1] &lt;= key &lt; sample[i]</code> to Reduce worker i. Which will guarentee that the sorted output of Reduce worker i are all less than the output of Reduce worker i+1. And the Reduce workers will sort all keys that were sent to them.</p>
+<p><strong><a href="TeraByteSort.pdf">TeraSort</a> is a standard
+MapReduce sort.</strong> <br>In particular, the partitioner (uses trie)
+and Map workers will send all keys such that
+<code>sample[i-1] &lt;= key &lt; sample[i]</code> to Reduce worker i.
+Which will guarentee that the sorted output of Reduce worker i are all
+less than the output of Reduce worker i+1. And the Reduce workers will
+sort all keys that were sent to them.</p>
 </blockquote>
-<h4>2. MergeSort</h4>
+<h4 id="mergesort">2. MergeSort</h4>
 <blockquote>
-<p><strong>MergeSort</strong> is the default way of sorting in MapReduce.<!-- raw HTML omitted --> Each Map workers sort its own piece of data (divide) and the Reduce workers merge them.</p>
+<p><strong>MergeSort</strong> is the default way of sorting in
+MapReduce.<br> Each Map workers sort its own piece of data (divide) and
+the Reduce workers merge them.</p>
 </blockquote>
-<p>In this particular example, we use <strong>TeraSort</strong> as our algorithm.</p>
-<p><img src="Sources/sorta.png" alt="sorta"></p>
-<p><strong>The top graph of Figure (a) shows the rate at which input is read, as we can see, the rate peaks at about 13GB/s, and then all Map tasks finished before 200 seconds have elapsed.</strong><!-- raw HTML omitted --></p>
-<p>There are two things in the graph need to be mentioned:</p>
-<ol>
-<li>
-<p><strong>Note that the input rate is lesss than for <em>grep</em>, that is because the sort map tasks spend about half their time and I/O bandwidth writing intermediate output to their local disks. (Just number counts in <em>grep</em>)</strong></p>
-</li>
-<li>
-<p><strong>For the following figure, the graph on the right is the TeraSort in MapReduce without [Backup Tasks](### 5.Backup Tasks) that we mentioned before.<!-- raw HTML omitted -->As we can see that, there are two peaks on the left graph and only one on the right, that is at the end the of all Map tasks, there will be some Backup Tasks that assigned by the Master to other already-finished (free) workers, to help avoid the &quot;straggler&quot; problem which we mentioned above.</strong><!-- raw HTML omitted --></p>
-</li>
+<p>In this particular example, we use <strong>TeraSort</strong> as our
+algorithm.</p>
+<figure>
+<img src="Sources/sorta.png" alt="sorta" />
+<figcaption aria-hidden="true">sorta</figcaption>
+</figure>
+<p><strong>The top graph of Figure (a) shows the rate at which input is
+read, as we can see, the rate peaks at about 13GB/s, and then all Map
+tasks finished before 200 seconds have elapsed.</strong><br></p>
+<p>There are two things in the graph need to be mentioned: 1.
+<strong>Note that the input rate is lesss than for <em>grep</em>, that
+is because the sort map tasks spend about half their time and I/O
+bandwidth writing intermediate output to their local disks. (Just number
+counts in <em>grep</em>)</strong></p>
+<ol start="2" type="1">
+<li><strong>For the following figure, the graph on the right is the
+TeraSort in MapReduce without <a href="###%205.Backup%20Tasks">Backup
+Tasks</a> that we mentioned before.<br>As we can see that, there are two
+peaks on the left graph and only one on the right, that is at the end
+the of all Map tasks, there will be some Backup Tasks that assigned by
+the Master to other already-finished (free) workers, to help avoid the
+“straggler” problem which we mentioned above.</strong><br></li>
 </ol>
-<p><img src="Sources/input.png" alt="input"></p>
-<p>As expected, the finish time of MapReduce with backup tasks enabled finished about 960 seconds, which is about 44% faster than the backup tasks disabled MapReduce tasks.</p>
-<p><strong>The middle graph of Figure (a) shows the rate at which data is sent over the nework from the map tasks to the reduce tasks.</strong><!-- raw HTML omitted --></p>
-<p><img src="Sources/so.png" alt="so"></p>
-<p>The shuffling starts as soons as the first map task completes. Since the number of map tasks is much larger than reduce tasks, the first hump in the graph is for the first batch of approximately 1800 reduce tasks, then after this first batch fiinshed, which costs about 300 seconds, <strong>then these Reduce workers write their sorted data to the final output files files by the reduce tasks. As we can see in the bottom graph.</strong><!-- raw HTML omitted --></p>
-<p>There are also a few things to note:<!-- raw HTML omitted --></p>
-<ol>
-<li>
-<p><strong>The input rate is higher than the shuffle rate and output rate, that is because the [locality optimization](### 3. Locality), where most data is read from a local disk.</strong></p>
-</li>
-<li>
-<p><strong>The shuffle rate is higher than the output rate because the output phase writes two copies of the sorted data. (replicas of the output for the reliability) The copy algorithm in the files system is slower than erasure operations.</strong></p>
-</li>
+<figure>
+<img src="Sources/input.png" alt="input" />
+<figcaption aria-hidden="true">input</figcaption>
+</figure>
+<p>As expected, the finish time of MapReduce with backup tasks enabled
+finished about 960 seconds, which is about 44% faster than the backup
+tasks disabled MapReduce tasks.</p>
+<p><strong>The middle graph of Figure (a) shows the rate at which data
+is sent over the nework from the map tasks to the reduce
+tasks.</strong><br></p>
+<figure>
+<img src="Sources/so.png" alt="so" />
+<figcaption aria-hidden="true">so</figcaption>
+</figure>
+<p>The shuffling starts as soons as the first map task completes. Since
+the number of map tasks is much larger than reduce tasks, the first hump
+in the graph is for the first batch of approximately 1800 reduce tasks,
+then after this first batch fiinshed, which costs about 300 seconds,
+<strong>then these Reduce workers write their sorted data to the final
+output files files by the reduce tasks. As we can see in the bottom
+graph.</strong><br></p>
+<p>There are also a few things to note:<br></p>
+<ol type="1">
+<li><p><strong>The input rate is higher than the shuffle rate and output
+rate, that is because the <a href="###%203.%20Locality">locality
+optimization</a>, where most data is read from a local
+disk.</strong></p></li>
+<li><p><strong>The shuffle rate is higher than the output rate because
+the output phase writes two copies of the sorted data. (replicas of the
+output for the reliability) The copy algorithm in the files system is
+slower than erasure operations.</strong></p></li>
 </ol>
 	</section>
 	</div>
@@ -297,6 +611,10 @@ this.page.identifier = "ds/papers/mapreduce.html"
    </div>
 </footer>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
 <script src="../../../theme/js/bootstrap.min.js"></script>
 
 <!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
